@@ -45,12 +45,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
 
   <!-- Immediate Zero-FOUC Theme Initializer -->
   <script>
     (function() {
       try {
-        var t = localStorage.getItem('agy_theme') || 'terminal_dev';
+        var t = localStorage.getItem('agy_theme') || 'editorial_paper';
         document.documentElement.setAttribute('data-theme', t);
         if (t === 'swiss_minimal') {
           document.documentElement.classList.remove('dark');
@@ -69,7 +71,7 @@
       theme: {
         extend: {
           colors: {
-            brand: '#10b981'
+            brand: '#b45309'
           }
         }
       }
@@ -78,16 +80,10 @@
 
   <!-- Theme Specific & Dynamic Multi-Theme Styles -->
   <style>
-    body { font-family: 'JetBrains Mono', monospace; }
+    body { font-family: 'Inter', sans-serif; }
     
-        pre, code, kbd { font-family: 'JetBrains Mono', monospace; }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #0c0e14; }
-        ::-webkit-scrollbar-thumb { background: #1e2333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
-        .terminal-dot-red { background-color: #ff5f56; }
-        .terminal-dot-yellow { background-color: #ffbd2e; }
-        .terminal-dot-green { background-color: #27c93f; }
+        h1, h2, h3, .serif-heading { font-family: 'Newsreader', Georgia, serif; }
+        .editorial-rule { border-top: 2px solid #27272a; }
         
 
     /* Dynamic Multi-Theme Overrides */
@@ -213,37 +209,43 @@
   <!-- Tech Stack Scripts (Alpine.js / Canvas loop / Terminal runtime) -->
   
         <script>
-        // Terminal Keyboard Shortcut (Ctrl+K or /) & Toast Notification Runtime
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById('reading-bar');
+            if (bar) bar.style.width = scrolled + '%';
+        });
         window.showToast = function(msg) {
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-6 right-6 z-50 bg-[#10b981] text-black font-mono text-xs px-4 py-2.5 rounded-lg shadow-2xl font-bold flex items-center space-x-2 animate-bounce';
-            toast.innerHTML = '<span>></span><span>' + msg + '</span>';
+            toast.className = 'fixed bottom-6 right-6 z-50 bg-[#27272a] dark:bg-[#f4f4f5] text-[#f4f4f5] dark:text-[#27272a] text-xs px-4 py-2.5 rounded shadow-lg font-serif italic';
+            toast.textContent = msg;
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 2500);
         };
         </script>
         
-</head>
-<body class="bg-[#0c0e14] text-[#e2e8f0] min-h-screen flex flex-col transition-colors duration-200">
 
+  <!-- Google AdSense Monetization (Activated when site traffic qualifies and client ID is set) -->
+  
+</head>
+<body class="bg-[#fcfbf9] dark:bg-[#18181b] text-[#27272a] dark:text-[#f4f4f5] min-h-screen flex flex-col transition-colors duration-200">
+
+  
+  <div id="reading-bar" class="fixed top-0 left-0 h-1 bg-[#b45309] z-[100] transition-all duration-100" style="width: 0%"></div>
   
 
   <!-- Header Navigation (Responsive Desktop & Mobile) -->
-  <header class="sticky top-0 z-50 bg-[#11141d]/90 backdrop-blur-md border-b border-[#1e2333]">
+  <header class="sticky top-0 z-50 bg-[#fcfbf9]/90 dark:bg-[#18181b]/90 backdrop-blur-md border-b border-[#e4e4e7] dark:border-[#27272a]">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
       <!-- Brand & Terminal Indicator -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         
-        <div class="hidden sm:flex items-center space-x-1.5 mr-1 sm:mr-2">
-          <span class="w-3 h-3 rounded-full terminal-dot-red inline-block"></span>
-          <span class="w-3 h-3 rounded-full terminal-dot-yellow inline-block"></span>
-          <span class="w-3 h-3 rounded-full terminal-dot-green inline-block"></span>
-        </div>
-        
 
         <a href="/" class="flex items-center space-x-2.5 sm:space-x-3 group">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-black text-base sm:text-lg bg-[#10b981] hover:bg-[#059669] text-black font-bold tracking-tight shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-black text-base sm:text-lg bg-[#b45309] hover:bg-[#92400e] text-white font-medium rounded-lg">
             S
           </div>
           <span class="text-base sm:text-lg font-extrabold tracking-tight truncate max-w-[150px] sm:max-w-none">
@@ -266,10 +268,10 @@
           </button>
 
           <!-- Dropdown Panel (Categorized & Compact) -->
-          <div id="tools-dropdown-panel" class="hidden absolute left-0 mt-1.5 w-72 sm:w-80 rounded-2xl bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] shadow-2xl z-50 p-2 font-mono text-xs backdrop-blur-xl">
+          <div id="tools-dropdown-panel" class="hidden absolute left-0 mt-1.5 w-72 sm:w-80 rounded-2xl bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] shadow-2xl z-50 p-2 font-mono text-xs backdrop-blur-xl">
             <div class="flex items-center justify-between px-2.5 py-1 text-[10px] uppercase tracking-wider opacity-50 border-b border-white/10 mb-1">
               <span>Developer Tools Index</span>
-              <span>5 All Tools</span>
+              <span>11 All Tools</span>
             </div>
             <div class="max-h-72 overflow-y-auto space-y-0.5">
               
@@ -313,9 +315,57 @@
                 <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
               </a>
               
+              <a href="/seo-technical-audit-meta-tag-analyzer-free-online" title="Seo Technical Audit & Meta Tag Analyzer Free Online - Free Online Tool" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Seo Technical</div>
+                  <div class="text-[10px] opacity-50 truncate">Use the best online SEO Technical Audit & Meta Tag Analyzer free online tool. Fast, accurate, and completely free in your browser.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/seo-technical-audit-meta-tag-analyzer-generator" title="Seo Technical Audit & Meta Tag Analyzer Generator - Free Online Tool" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Seo Technical</div>
+                  <div class="text-[10px] opacity-50 truncate">Use the best online SEO Technical Audit & Meta Tag Analyzer generator tool. Fast, accurate, and completely free in your browser.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/seo-technical-audit-meta-tag-analyzer-viewer" title="Seo Technical Audit & Meta Tag Analyzer Viewer - Free Online Tool" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Seo Technical</div>
+                  <div class="text-[10px] opacity-50 truncate">Use the best online SEO Technical Audit & Meta Tag Analyzer viewer tool. Fast, accurate, and completely free in your browser.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/seo-technical-audit-meta-tag-analyzer-without-watermark" title="Seo Technical Audit & Meta Tag Analyzer Without Watermark - Free Online Tool" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Seo Technical</div>
+                  <div class="text-[10px] opacity-50 truncate">Use the best online SEO Technical Audit & Meta Tag Analyzer without watermark tool. Fast, accurate, and completely free in your browser.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/seo-technical-audit-meta-tag-analyzer-vs-alternatives" title="Seo Technical Audit & Meta Tag Analyzer Vs Alternatives - Free Online Tool" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Seo Technical</div>
+                  <div class="text-[10px] opacity-50 truncate">Use the best online SEO Technical Audit & Meta Tag Analyzer vs alternatives tool. Fast, accurate, and completely free in your browser.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/seo-technical-audit-meta-tag-analyzer-calculator-2" title="Seo Technical Audit & Meta Tag Analyzer Calculator 2 - Free Online Tool" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Seo Technical</div>
+                  <div class="text-[10px] opacity-50 truncate">Use the best online SEO Technical Audit & Meta Tag Analyzer calculator 2 tool. Fast, accurate, and completely free in your browser.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
             </div>
             <div class="mt-1.5 pt-1.5 border-t border-white/10 px-2 flex items-center justify-between">
-              <a href="/#tools-grid" class="text-[11px] font-bold hover:underline flex items-center space-x-1" style="color: #10b981">
+              <a href="/#tools-grid" class="text-[11px] font-bold hover:underline flex items-center space-x-1" style="color: #b45309">
                 <span>Browse All</span>
                 <span>&rarr;</span>
               </a>
@@ -335,24 +385,24 @@
       <!-- Action Items & Language Selector & Quick Search & Mobile Hamburger -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         <!-- Quick Search Trigger in Header -->
-        <button id="global-search-btn" type="button" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-black/15 hover:bg-black/30 text-xs font-mono opacity-80 hover:opacity-100 transition" title="Search tools by keyword, format... (Press / to focus)">
+        <button id="global-search-btn" type="button" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/15 hover:bg-black/30 text-xs font-mono opacity-80 hover:opacity-100 transition" title="Search tools by keyword, format... (Press / to focus)">
           <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
           <span class="hidden sm:inline opacity-70">Search</span>
-          <kbd class="hidden sm:inline text-[9px] px-1 py-0.5 rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50 bg-black/20 font-mono">Ctrl+K</kbd>
+          <kbd class="hidden sm:inline text-[9px] px-1 py-0.5 rounded border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] opacity-50 bg-black/20 font-mono">Ctrl+K</kbd>
         </button>
 
         <!-- Interactive Multi-Theme Selector Dropdown -->
         <div class="relative inline-block text-left" id="theme-selector-container">
-          <button id="theme-toggle-btn" type="button" class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-90 transition bg-black/20" title="Theme Style">
+          <button id="theme-toggle-btn" type="button" class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:opacity-90 transition bg-black/20" title="Theme Style">
             <span id="theme-current-icon" class="text-sm leading-none">🖤</span>
             <span id="theme-current-name" class="hidden xl:inline text-xs font-medium">Terminal Black</span>
             <svg class="w-3 h-3 opacity-60 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <div id="theme-dropdown-menu" class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-50 py-1.5 font-mono text-xs shadow-2xl backdrop-blur-xl">
+          <div id="theme-dropdown-menu" class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] z-50 py-1.5 font-mono text-xs shadow-2xl backdrop-blur-xl">
             <div class="px-3 py-1 text-[10px] uppercase tracking-wider opacity-50 border-b border-white/10 mb-1">
               Theme Style
             </div>
@@ -389,12 +439,12 @@
 
         <!-- 7-Language International Dropdown -->
         <div class="relative inline-block text-left" id="lang-container">
-          <button id="lang-toggle-btn" type="button" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-90 transition bg-black/20">
+          <button id="lang-toggle-btn" type="button" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:opacity-90 transition bg-black/20">
             <span>[EN]</span>
             <span class="font-bold">EN</span>
             <span class="text-[9px] opacity-60">&darr;</span>
           </button>
-          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-36 rounded-xl bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-50 py-1.5 font-mono text-xs shadow-2xl">
+          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-36 rounded-xl bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] z-50 py-1.5 font-mono text-xs shadow-2xl">
             
             <a href="/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition font-bold text-emerald-400">
               <span>[EN] English</span>
@@ -435,7 +485,7 @@
         </div>
 
         <!-- Mobile Menu Toggle Button (Visible on mobile <768px) -->
-        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-80 transition flex items-center justify-center bg-black/20" aria-label="Toggle Navigation Menu">
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:opacity-80 transition flex items-center justify-center bg-black/20" aria-label="Toggle Navigation Menu">
           <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -447,26 +497,26 @@
     </div>
 
     <!-- Mobile Collapsible Navigation Menu Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-[#1e2333] bg-[#11141d]/90 backdrop-blur-md px-4 pt-3 pb-5 space-y-2 backdrop-blur-lg">
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#e4e4e7] dark:border-[#27272a] bg-[#fcfbf9]/90 dark:bg-[#18181b]/90 backdrop-blur-md px-4 pt-3 pb-5 space-y-2 backdrop-blur-lg">
       <a href="/" class="block px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/10 transition">Home</a>
 
       <!-- Mobile Theme Switcher Bar -->
       <div class="py-2 border-b border-white/10 mb-2">
         <div class="text-[10px] uppercase font-mono opacity-50 mb-1.5">Theme Style</div>
         <div class="grid grid-cols-4 gap-1.5">
-          <button onclick="window.switchTheme('terminal_dev', true)" title="Terminal Black" class="p-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
+          <button onclick="window.switchTheme('terminal_dev', true)" title="Terminal Black" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
             <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] mb-1"></span>
             <span class="truncate max-w-full">Terminal</span>
           </button>
-          <button onclick="window.switchTheme('cyber_electric', true)" title="Cyber Neon" class="p-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
+          <button onclick="window.switchTheme('cyber_electric', true)" title="Cyber Neon" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
             <span class="w-2.5 h-2.5 rounded-full bg-[#38bdf8] mb-1"></span>
             <span class="truncate max-w-full">Cyber</span>
           </button>
-          <button onclick="window.switchTheme('midnight_purple', true)" title="Midnight Purple" class="p-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
+          <button onclick="window.switchTheme('midnight_purple', true)" title="Midnight Purple" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
             <span class="w-2.5 h-2.5 rounded-full bg-[#c084fc] mb-1"></span>
             <span class="truncate max-w-full">Purple</span>
           </button>
-          <button onclick="window.switchTheme('swiss_minimal', true)" title="Swiss Minimal" class="p-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
+          <button onclick="window.switchTheme('swiss_minimal', true)" title="Swiss Minimal" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
             <span class="w-2.5 h-2.5 rounded-full bg-[#2563eb] mb-1"></span>
             <span class="truncate max-w-full">Minimal</span>
           </button>
@@ -474,19 +524,19 @@
       </div>
 
       <!-- Quick Search Trigger in Mobile Drawer -->
-      <button id="mobile-search-trigger" type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono opacity-80">
+      <button id="mobile-search-trigger" type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 text-xs font-mono opacity-80">
         <span class="flex items-center space-x-2">
           <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
           <span>Search tools by keyword, format... (Press / to focus)</span>
         </span>
-        <kbd class="text-[10px] px-1.5 py-0.5 rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50">/</kbd>
+        <kbd class="text-[10px] px-1.5 py-0.5 rounded border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] opacity-50">/</kbd>
       </button>
 
       <!-- Tools Group in Mobile Drawer -->
-      <div class="pt-2 border-t border-[#1e2333]">
-        <div class="text-[10px] font-mono uppercase tracking-wider opacity-50 px-3 mb-1">All Tools (5)</div>
+      <div class="pt-2 border-t border-[#e4e4e7] dark:border-[#27272a]">
+        <div class="text-[10px] font-mono uppercase tracking-wider opacity-50 px-3 mb-1">All Tools (11)</div>
         <div class="space-y-1 max-h-60 overflow-y-auto">
           
           <a href="/opengraph-card-preview" title="OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
@@ -514,6 +564,36 @@
             <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
           </a>
           
+          <a href="/seo-technical-audit-meta-tag-analyzer-free-online" title="Seo Technical Audit & Meta Tag Analyzer Free Online - Free Online Tool" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Seo Technical</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/seo-technical-audit-meta-tag-analyzer-generator" title="Seo Technical Audit & Meta Tag Analyzer Generator - Free Online Tool" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Seo Technical</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/seo-technical-audit-meta-tag-analyzer-viewer" title="Seo Technical Audit & Meta Tag Analyzer Viewer - Free Online Tool" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Seo Technical</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/seo-technical-audit-meta-tag-analyzer-without-watermark" title="Seo Technical Audit & Meta Tag Analyzer Without Watermark - Free Online Tool" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Seo Technical</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/seo-technical-audit-meta-tag-analyzer-vs-alternatives" title="Seo Technical Audit & Meta Tag Analyzer Vs Alternatives - Free Online Tool" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Seo Technical</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/seo-technical-audit-meta-tag-analyzer-calculator-2" title="Seo Technical Audit & Meta Tag Analyzer Calculator 2 - Free Online Tool" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Seo Technical</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
         </div>
       </div>
     </div>
@@ -524,10 +604,12 @@
     
 
     
+
+    
         <div class="max-w-7xl mx-auto">
           <!-- Hero Banner (Mobile & Desktop Responsive) -->
           <div class="text-center py-8 sm:py-12 md:py-16">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs font-mono mb-4 sm:mb-5">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs font-mono mb-4 sm:mb-5">
               <span>Webmaster SEO Growth & Technical Meta Suite</span>
             </div>
             <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight mb-3 sm:mb-4">
@@ -546,33 +628,39 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
               </div>
-              <input type="text" id="tool-search" placeholder="Search tools by keyword, format... (Press / to focus)" class="w-full pl-11 pr-20 py-3 sm:py-3.5 rounded-2xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/10 dark:bg-black/30 text-xs sm:text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition">
+              <input type="text" id="tool-search" placeholder="Search tools by keyword, format... (Press / to focus)" class="w-full pl-11 pr-20 py-3 sm:py-3.5 rounded-2xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/10 dark:bg-black/30 text-xs sm:text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition">
               <div class="absolute right-3.5 flex items-center space-x-1.5">
-                <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50 bg-black/20">Ctrl+K</kbd>
+                <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] opacity-50 bg-black/20">Ctrl+K</kbd>
                 <button id="btn-clear-search" class="hidden text-xs opacity-60 hover:opacity-100 font-mono px-1">&times;</button>
               </div>
             </div>
             <div class="flex items-center justify-between text-[11px] font-mono opacity-60 mt-2.5 px-1">
-              <span id="search-stats">Showing all 5 developer utilities</span>
+              <span id="search-stats">Showing all 11 developer utilities</span>
               <span class="hidden sm:inline">100% Client-Side Evaluation</span>
             </div>
           </div>
 
           <!-- Empty State (Hidden by default) -->
-          <div id="no-tools-found" class="hidden text-center py-12 px-4 rounded-2xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5 mb-12">
+          <div id="no-tools-found" class="hidden text-center py-12 px-4 rounded-2xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/5 dark:bg-white/5 mb-12">
             <p class="text-sm font-mono opacity-75 mb-3">No developer tools matching your query.</p>
-            <button id="btn-reset-filter" class="px-4 py-1.5 rounded-xl text-xs font-mono font-bold border border-[#1e2333] hover:border-[#10b981]/50 hover:bg-white/10 transition">
+            <button id="btn-reset-filter" class="px-4 py-1.5 rounded-xl text-xs font-mono font-bold border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:bg-white/10 transition">
               Reset Filter
             </button>
           </div>
 
           <!-- Grid of Tools (1 col mobile, 2 cols tablet, 3 cols desktop) -->
           <div id="tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5 mb-12 sm:mb-16">
-            <a href="/opengraph-card-preview" data-search="opengraph & twitter card preview simulator - real-time social card tester test and visualize how your webpage links appear when shared across twitter/x, facebook, linkedin, and messaging apps before publishing. opengraph preview generator twitter card simulator social media card tester check og meta tags facebook share preview opengraph-card-preview" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Test and visualize how your webpage links appear when shared across Twitter/X, Facebook, LinkedIn, and messaging apps before publishing.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#opengraph preview generator</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#twitter card simulator</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#social media card tester</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
-<a href="/hreflang-tag-generator" data-search="international hreflang tag matrix & xml sitemap generator generate valid, reciprocal hreflang alternate tags for multi-region and multi-language websites with automatic x-default fallback. hreflang tag generator multilingual seo tags hreflang sitemap xml generator x-default tag generator international seo tools hreflang-tag-generator" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">International hreflang Tag Matrix & XML Sitemap Generator</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Generate valid, reciprocal hreflang alternate tags for multi-region and multi-language websites with automatic x-default fallback.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#hreflang tag generator</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#multilingual seo tags</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#hreflang sitemap xml generator</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
-<a href="/robots-txt-generator" data-search="robots.txt generator & ai crawler directive syntax linter create compliant robots.txt directives for googlebot, bingbot, and ai web crawlers (gptbot, claudebot) with automatic sitemap linkage. robots txt generator block gptbot robots txt googlebot disallow generator sitemap directive in robots create robots txt online robots-txt-generator" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Robots.txt Generator & AI Crawler Directive Syntax Linter</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Create compliant robots.txt directives for Googlebot, Bingbot, and AI web crawlers (GPTBot, ClaudeBot) with automatic sitemap linkage.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#robots txt generator</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#block gptbot robots txt</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#googlebot disallow generator</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
-<a href="/schema-json-ld-generator" data-search="schema.org json-ld generator - rich results structured data maker generate valid json-ld schema markup for webapplication, faqpage, article, and products to qualify for google serp rich results. json ld generator schema org markup maker google rich results schema faq schema generator webapplication structured data schema-json-ld-generator" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Schema.org JSON-LD Generator - Rich Results Structured Data Maker</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Generate valid JSON-LD schema markup for WebApplication, FAQPage, Article, and Products to qualify for Google SERP rich results.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#json ld generator</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#schema org markup maker</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#google rich results schema</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
-<a href="/keyword-density-analyzer" data-search="keyword density analyzer - on-page seo term frequency & n-gram counter calculate exact keyword densities, term frequencies, and n-gram distributions to optimize content and prevent google stuffing penalties. keyword density analyzer on page seo term counter check keyword stuffing n gram frequency calculator content word density free keyword-density-analyzer" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Keyword Density Analyzer - On-Page SEO Term Frequency & N-Gram Counter</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Calculate exact keyword densities, term frequencies, and N-gram distributions to optimize content and prevent Google stuffing penalties.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#keyword density analyzer</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#on page seo term counter</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#check keyword stuffing</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+            <a href="/opengraph-card-preview" data-search="opengraph & twitter card preview simulator - real-time social card tester test and visualize how your webpage links appear when shared across twitter/x, facebook, linkedin, and messaging apps before publishing. opengraph preview generator twitter card simulator social media card tester check og meta tags facebook share preview opengraph-card-preview" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Test and visualize how your webpage links appear when shared across Twitter/X, Facebook, LinkedIn, and messaging apps before publishing.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#opengraph preview generator</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#twitter card simulator</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#social media card tester</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/hreflang-tag-generator" data-search="international hreflang tag matrix & xml sitemap generator generate valid, reciprocal hreflang alternate tags for multi-region and multi-language websites with automatic x-default fallback. hreflang tag generator multilingual seo tags hreflang sitemap xml generator x-default tag generator international seo tools hreflang-tag-generator" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">International hreflang Tag Matrix & XML Sitemap Generator</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Generate valid, reciprocal hreflang alternate tags for multi-region and multi-language websites with automatic x-default fallback.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#hreflang tag generator</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#multilingual seo tags</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#hreflang sitemap xml generator</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/robots-txt-generator" data-search="robots.txt generator & ai crawler directive syntax linter create compliant robots.txt directives for googlebot, bingbot, and ai web crawlers (gptbot, claudebot) with automatic sitemap linkage. robots txt generator block gptbot robots txt googlebot disallow generator sitemap directive in robots create robots txt online robots-txt-generator" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Robots.txt Generator & AI Crawler Directive Syntax Linter</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Create compliant robots.txt directives for Googlebot, Bingbot, and AI web crawlers (GPTBot, ClaudeBot) with automatic sitemap linkage.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#robots txt generator</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#block gptbot robots txt</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#googlebot disallow generator</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/schema-json-ld-generator" data-search="schema.org json-ld generator - rich results structured data maker generate valid json-ld schema markup for webapplication, faqpage, article, and products to qualify for google serp rich results. json ld generator schema org markup maker google rich results schema faq schema generator webapplication structured data schema-json-ld-generator" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Schema.org JSON-LD Generator - Rich Results Structured Data Maker</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Generate valid JSON-LD schema markup for WebApplication, FAQPage, Article, and Products to qualify for Google SERP rich results.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#json ld generator</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#schema org markup maker</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#google rich results schema</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/keyword-density-analyzer" data-search="keyword density analyzer - on-page seo term frequency & n-gram counter calculate exact keyword densities, term frequencies, and n-gram distributions to optimize content and prevent google stuffing penalties. keyword density analyzer on page seo term counter check keyword stuffing n gram frequency calculator content word density free keyword-density-analyzer" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Keyword Density Analyzer - On-Page SEO Term Frequency & N-Gram Counter</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Calculate exact keyword densities, term frequencies, and N-gram distributions to optimize content and prevent Google stuffing penalties.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#keyword density analyzer</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#on page seo term counter</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#check keyword stuffing</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/seo-technical-audit-meta-tag-analyzer-free-online" data-search="seo technical audit & meta tag analyzer free online - free online tool use the best online seo technical audit & meta tag analyzer free online tool. fast, accurate, and completely free in your browser. seo technical audit & meta tag analyzer best seo technical audit & meta tag analyzer fast seo technical audit & meta tag analyzer instant seo technical audit & meta tag analyzer calculator seo-technical-audit-meta-tag-analyzer-free-online" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Seo Technical Audit & Meta Tag Analyzer Free Online - Free Online Tool</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer free online tool. Fast, accurate, and completely free in your browser.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer best</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer fast</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer instant</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/seo-technical-audit-meta-tag-analyzer-generator" data-search="seo technical audit & meta tag analyzer generator - free online tool use the best online seo technical audit & meta tag analyzer generator tool. fast, accurate, and completely free in your browser. seo technical audit & meta tag analyzer converter seo technical audit & meta tag analyzer checker seo technical audit & meta tag analyzer formatter seo technical audit & meta tag analyzer validator seo-technical-audit-meta-tag-analyzer-generator" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Seo Technical Audit & Meta Tag Analyzer Generator - Free Online Tool</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer generator tool. Fast, accurate, and completely free in your browser.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer converter</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer checker</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer formatter</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/seo-technical-audit-meta-tag-analyzer-viewer" data-search="seo technical audit & meta tag analyzer viewer - free online tool use the best online seo technical audit & meta tag analyzer viewer tool. fast, accurate, and completely free in your browser. seo technical audit & meta tag analyzer simple seo technical audit & meta tag analyzer how to use seo technical audit & meta tag analyzer guide seo technical audit & meta tag analyzer download seo-technical-audit-meta-tag-analyzer-viewer" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Seo Technical Audit & Meta Tag Analyzer Viewer - Free Online Tool</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer viewer tool. Fast, accurate, and completely free in your browser.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer simple</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer how to use</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer guide</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/seo-technical-audit-meta-tag-analyzer-without-watermark" data-search="seo technical audit & meta tag analyzer without watermark - free online tool use the best online seo technical audit & meta tag analyzer without watermark tool. fast, accurate, and completely free in your browser. seo technical audit & meta tag analyzer for beginners seo technical audit & meta tag analyzer interactive seo technical audit & meta tag analyzer open source seo technical audit & meta tag analyzer tips seo-technical-audit-meta-tag-analyzer-without-watermark" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Seo Technical Audit & Meta Tag Analyzer Without Watermark - Free Online Tool</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer without watermark tool. Fast, accurate, and completely free in your browser.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer for beginners</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer interactive</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer open source</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/seo-technical-audit-meta-tag-analyzer-vs-alternatives" data-search="seo technical audit & meta tag analyzer vs alternatives - free online tool use the best online seo technical audit & meta tag analyzer vs alternatives tool. fast, accurate, and completely free in your browser. seo technical audit & meta tag analyzer free online 2 seo technical audit & meta tag analyzer best 2 seo technical audit & meta tag analyzer fast 2 seo technical audit & meta tag analyzer instant 2 seo-technical-audit-meta-tag-analyzer-vs-alternatives" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Seo Technical Audit & Meta Tag Analyzer Vs Alternatives - Free Online Tool</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer vs alternatives tool. Fast, accurate, and completely free in your browser.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer free online 2</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer best 2</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer fast 2</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
+<a href="/seo-technical-audit-meta-tag-analyzer-calculator-2" data-search="seo technical audit & meta tag analyzer calculator 2 - free online tool use the best online seo technical audit & meta tag analyzer calculator 2 tool. fast, accurate, and completely free in your browser. seo technical audit & meta tag analyzer generator 2 seo technical audit & meta tag analyzer converter 2 seo technical audit & meta tag analyzer checker 2 seo technical audit & meta tag analyzer formatter 2 seo-technical-audit-meta-tag-analyzer-calculator-2" class="tool-card bg-white dark:bg-[#202024] rounded-xl p-5 sm:p-6 border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% Local</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Seo Technical Audit & Meta Tag Analyzer Calculator 2 - Free Online Tool</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer calculator 2 tool. Fast, accurate, and completely free in your browser.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer generator 2</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer converter 2</span><span class='inline-block bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#SEO Technical Audit & Meta Tag Analyzer checker 2</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #b45309"><span>Launch Tool</span><span>&rarr;</span></div></div></a>
           </div>
         </div>
 
@@ -643,21 +731,23 @@
         })();
         </script>
         
+
+    
   </main>
 
   <!-- Internal Linking Matrix -->
-  <section class="border-t border-[#1e2333] py-12 px-4 sm:px-6 lg:px-8 opacity-95">
+  <section class="border-t border-[#e4e4e7] dark:border-[#27272a] py-12 px-4 sm:px-6 lg:px-8 opacity-95">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-6">
         <h3 class="text-sm font-bold uppercase tracking-wider opacity-80 font-mono">
           [+] Developer Tools Index
         </h3>
-        <span class="text-xs opacity-60 font-mono">5 All Tools</span>
+        <span class="text-xs opacity-60 font-mono">11 All Tools</span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         
-        <a href="/opengraph-card-preview" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+        <a href="/opengraph-card-preview" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester
           </div>
@@ -666,7 +756,7 @@
           </p>
         </a>
         
-        <a href="/hreflang-tag-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+        <a href="/hreflang-tag-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             International hreflang Tag Matrix & XML Sitemap Generator
           </div>
@@ -675,7 +765,7 @@
           </p>
         </a>
         
-        <a href="/robots-txt-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+        <a href="/robots-txt-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Robots.txt Generator & AI Crawler Directive Syntax Linter
           </div>
@@ -684,7 +774,7 @@
           </p>
         </a>
         
-        <a href="/schema-json-ld-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+        <a href="/schema-json-ld-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Schema.org JSON-LD Generator - Rich Results Structured Data Maker
           </div>
@@ -693,7 +783,7 @@
           </p>
         </a>
         
-        <a href="/keyword-density-analyzer" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+        <a href="/keyword-density-analyzer" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Keyword Density Analyzer - On-Page SEO Term Frequency & N-Gram Counter
           </div>
@@ -702,12 +792,66 @@
           </p>
         </a>
         
+        <a href="/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Seo Technical Audit & Meta Tag Analyzer Free Online - Free Online Tool
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Use the best online SEO Technical Audit & Meta Tag Analyzer free online tool. Fast, accurate, and completely free in your browser.
+          </p>
+        </a>
+        
+        <a href="/seo-technical-audit-meta-tag-analyzer-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Seo Technical Audit & Meta Tag Analyzer Generator - Free Online Tool
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Use the best online SEO Technical Audit & Meta Tag Analyzer generator tool. Fast, accurate, and completely free in your browser.
+          </p>
+        </a>
+        
+        <a href="/seo-technical-audit-meta-tag-analyzer-viewer" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Seo Technical Audit & Meta Tag Analyzer Viewer - Free Online Tool
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Use the best online SEO Technical Audit & Meta Tag Analyzer viewer tool. Fast, accurate, and completely free in your browser.
+          </p>
+        </a>
+        
+        <a href="/seo-technical-audit-meta-tag-analyzer-without-watermark" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Seo Technical Audit & Meta Tag Analyzer Without Watermark - Free Online Tool
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Use the best online SEO Technical Audit & Meta Tag Analyzer without watermark tool. Fast, accurate, and completely free in your browser.
+          </p>
+        </a>
+        
+        <a href="/seo-technical-audit-meta-tag-analyzer-vs-alternatives" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Seo Technical Audit & Meta Tag Analyzer Vs Alternatives - Free Online Tool
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Use the best online SEO Technical Audit & Meta Tag Analyzer vs alternatives tool. Fast, accurate, and completely free in your browser.
+          </p>
+        </a>
+        
+        <a href="/seo-technical-audit-meta-tag-analyzer-calculator-2" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Seo Technical Audit & Meta Tag Analyzer Calculator 2 - Free Online Tool
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Use the best online SEO Technical Audit & Meta Tag Analyzer calculator 2 tool. Fast, accurate, and completely free in your browser.
+          </p>
+        </a>
+        
       </div>
     </div>
   </section>
 
   <!-- Global Multi-Language Matrix -->
-  <section class="border-t border-[#1e2333] py-10 px-4 sm:px-6 lg:px-8 opacity-95 bg-black/[0.02] dark:bg-white/[0.02]">
+  <section class="border-t border-[#e4e4e7] dark:border-[#27272a] py-10 px-4 sm:px-6 lg:px-8 opacity-95 bg-black/[0.02] dark:bg-white/[0.02]">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
         <div>
@@ -715,7 +859,7 @@
             <span>🌐</span> <span>Global Multi-Language Matrix</span>
           </h3>
           <p class="text-xs opacity-60 mt-0.5 font-mono">
-            7 Locales · 42 Localized Endpoints · 100% Client-Side
+            7 Locales · 84 Localized Endpoints · 100% Client-Side
           </p>
         </div>
         <span class="text-xs font-mono opacity-50">[EN] English (en)</span>
@@ -723,46 +867,46 @@
 
       <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5">
         
-        <a href="/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ring-2 ring-[#10b981]/50">
+        <a href="/" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ring-2 ring-[#10b981]/50">
           <div class="text-xl mb-1">[EN]</div>
           <div class="text-xs font-bold truncate group-hover:underline">English</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">5 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">11 All Tools</div>
         </a>
         
-        <a href="/zh/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/zh/" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[ZH]</div>
           <div class="text-xs font-bold truncate group-hover:underline">简体中文</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">5 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">11 All Tools</div>
         </a>
         
-        <a href="/es/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/es/" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[ES]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Español</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">5 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">11 All Tools</div>
         </a>
         
-        <a href="/pt/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/pt/" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[PT]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Português</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">5 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">11 All Tools</div>
         </a>
         
-        <a href="/de/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/de/" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[DE]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Deutsch</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">5 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">11 All Tools</div>
         </a>
         
-        <a href="/fr/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/fr/" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[FR]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Français</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">5 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">11 All Tools</div>
         </a>
         
-        <a href="/ja/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/ja/" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[JA]</div>
           <div class="text-xs font-bold truncate group-hover:underline">日本語</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">5 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">11 All Tools</div>
         </a>
         
       </div>
@@ -770,7 +914,7 @@
   </section>
 
   <!-- Comprehensive Multi-Column Footer -->
-  <footer class="border-t border-[#1e2333] pt-12 pb-8 text-xs opacity-90">
+  <footer class="border-t border-[#e4e4e7] dark:border-[#27272a] pt-12 pb-8 text-xs opacity-90">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Prominent Medical / Financial Compliance Disclaimer Banner -->
@@ -792,7 +936,7 @@
           <p class="text-[11px] opacity-70 leading-relaxed max-w-xs">
             Simulate OpenGraph social cards, generate hreflang matrices, validate robots.txt rules, and build JSON-LD schema.
           </p>
-          <div class="p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-white/5 font-mono text-[11px] text-[#10b981]">
+          <div class="p-2.5 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white/5 font-mono text-[11px] text-[#10b981]">
             🔒 100% Client-Side Sandbox: Zero server storage, zero data uploads.
           </div>
         </div>
@@ -911,7 +1055,7 @@
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-[#1e2333] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] opacity-60 font-mono">
+      <div class="border-t border-[#e4e4e7] dark:border-[#27272a] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] opacity-60 font-mono">
         <div>
           &copy; 2026 <strong>SeoKit Studio</strong>. Fast, Client-Side Privacy & Cloudflare Edge Accelerated.
         </div>
@@ -925,7 +1069,7 @@
   </footer>
 
   <!-- Floating Back to Top Button -->
-  <button id="back-to-top-btn" type="button" class="fixed bottom-6 right-6 p-2.5 rounded-full bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-40 hover:scale-110 focus:outline-none" aria-label="Back to top" title="Back to top">
+  <button id="back-to-top-btn" type="button" class="fixed bottom-6 right-6 p-2.5 rounded-full bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-40 hover:scale-110 focus:outline-none" aria-label="Back to top" title="Back to top">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
     </svg>
@@ -1051,7 +1195,7 @@
       if (saved && THEME_NAMES[saved]) {
         window.switchTheme(saved, false);
       } else {
-        window.switchTheme('terminal_dev', false);
+        window.switchTheme('editorial_paper', false);
       }
     } catch (e) {}
 
