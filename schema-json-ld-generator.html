@@ -879,7 +879,7 @@
     return Object.keys(obj).sort().reduce((acc, k) => {
       acc[k] = sortKeys(obj[k]);
       return acc;
-    }, {});
+    }, Object.create(null));
   }
 
   function processJSON() {
@@ -904,7 +904,8 @@
       if (window.showToast) window.showToast('Formatted successfully!');
     } catch (err) {
       statusEl.className = 'mt-3 p-2.5 rounded-xl text-xs font-mono bg-rose-500/10 text-rose-400 border border-rose-500/20';
-      statusEl.innerHTML = '&#x2717; <strong>Syntax Error:</strong> ' + err.message;
+      outputEl.value = '';
+      statusEl.textContent = '✗ Syntax Error: ' + err.message;
       statusEl.classList.remove('hidden');
     }
   }

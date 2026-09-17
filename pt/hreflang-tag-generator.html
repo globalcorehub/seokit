@@ -838,9 +838,24 @@
   ];
 
   function generate() {
-    const d = domIn.value.trim().replace(/^https?:\/\//, '').replace(/\/$/, '');
-    const tags = langs.map(l => '<link rel="alternate" hreflang="' + l.hreflang + '" href="https://' + d + l.prefix + '/" />');
-    tags.push('<link rel="alternate" hreflang="x-default" href="https://' + d + '/" />');
+    let origin;
+    try {
+      const raw = domIn.value.trim();
+      if (!raw) throw new Error('domain');
+      const url = new URL(/^https?:\/\//i.test(raw) ? raw : 'https://' + raw);
+      if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password ||
+          url.pathname !== '/' || url.search || url.hash) throw new Error('domain');
+      origin = url.origin;
+    } catch (error) {
+      outEl.value = '';
+      domIn.setAttribute('aria-invalid', 'true');
+      btnCopy.disabled = true;
+      return;
+    }
+    domIn.setAttribute('aria-invalid', 'false');
+    btnCopy.disabled = false;
+    const tags = langs.map(l => '<link rel="alternate" hreflang="' + l.hreflang + '" href="' + origin + l.prefix + '/" />');
+    tags.push('<link rel="alternate" hreflang="x-default" href="' + origin + '/" />');
     outEl.value = tags.join('\n');
   }
 

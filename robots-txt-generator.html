@@ -831,6 +831,17 @@
   function generate() {
     const p = preEl.value;
     const s = smEl.value.trim();
+    if (s && (p === 'allow' || p === 'block_ai')) {
+      try {
+        const url = new URL(s);
+        if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password || /[\r\n]/.test(s)) throw new Error('sitemap');
+      } catch (error) {
+        outEl.value = ''; btnCopy.disabled = true;
+        smEl.setAttribute('aria-invalid', 'true'); return;
+      }
+    }
+    btnCopy.disabled = false;
+    smEl.setAttribute('aria-invalid', 'false');
 
     let txt = '';
     if (p === 'allow') {
@@ -841,6 +852,7 @@
       txt = 'User-agent: *\nDisallow: /';
     }
 
+    if (!s) txt = txt.replace(/\n\nSitemap: $/, '');
     outEl.value = txt;
   }
 
