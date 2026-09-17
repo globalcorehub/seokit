@@ -45,16 +45,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  
 
   <!-- Immediate Zero-FOUC Theme Initializer -->
   <script>
     (function() {
       try {
-        var t = localStorage.getItem('agy_theme') || 'editorial_paper';
+        var t = 'terminal_dev';
         document.documentElement.setAttribute('data-theme', t);
-        if (t === 'swiss_minimal') {
+        if (t === 'swiss_minimal' || t === 'apple_bento_glass') {
           document.documentElement.classList.remove('dark');
         } else {
           document.documentElement.classList.add('dark');
@@ -71,7 +69,7 @@
       theme: {
         extend: {
           colors: {
-            brand: '#b45309'
+            brand: '#10b981'
           }
         }
       }
@@ -80,10 +78,16 @@
 
   <!-- Theme Specific & Dynamic Multi-Theme Styles -->
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'JetBrains Mono', monospace; }
     
-        h1, h2, h3, .serif-heading { font-family: 'Newsreader', Georgia, serif; }
-        .editorial-rule { border-top: 2px solid #27272a; }
+        pre, code, kbd { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0c0e14; }
+        ::-webkit-scrollbar-thumb { background: #1e2333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+        .terminal-dot-red { background-color: #ff5f56; }
+        .terminal-dot-yellow { background-color: #ffbd2e; }
+        .terminal-dot-green { background-color: #27c93f; }
         
 
     /* Dynamic Multi-Theme Overrides */
@@ -169,6 +173,50 @@
       color: #0f172a !important;
       border-color: #cbd5e1 !important;
     }
+
+    html[data-theme="apple_bento_glass"] body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+    html[data-theme="apple_bento_glass"] .bg-\[\#0c0e14\],
+    html[data-theme="apple_bento_glass"] .bg-\[\#fafaf9\] { background-color: #f8fafc !important; }
+    html[data-theme="apple_bento_glass"] header {
+      background-color: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px) !important;
+      border-color: rgba(226, 232, 240, 0.8) !important;
+    }
+    html[data-theme="apple_bento_glass"] .border-\[\#1e2333\],
+    html[data-theme="apple_bento_glass"] .border-\[\#3b1d68\] { border-color: #e2e8f0 !important; }
+    html[data-theme="apple_bento_glass"] .text-\[\#e2e8f0\],
+    html[data-theme="apple_bento_glass"] .text-\[\#cbd5e1\],
+    html[data-theme="apple_bento_glass"] .text-\[\#e9d5ff\] { color: #0f172a !important; }
+    html[data-theme="apple_bento_glass"] .text-\[\#10b981\] { color: #0284c7 !important; }
+    html[data-theme="apple_bento_glass"] .bg-\[\#10b981\] { background-color: #0284c7 !important; color: #ffffff !important; }
+    html[data-theme="apple_bento_glass"] .bg-\[\#10b981\]\/10 { background-color: rgba(2, 132, 199, 0.1) !important; }
+    html[data-theme="apple_bento_glass"] .border-\[\#10b981\]\/30 { border-color: rgba(2, 132, 199, 0.25) !important; }
+    html[data-theme="apple_bento_glass"] [style*="color: #10b981"],
+    html[data-theme="apple_bento_glass"] [style*="color:#10b981"] { color: #0284c7 !important; }
+    html[data-theme="apple_bento_glass"] #header-terminal-dots { display: none !important; }
+    html[data-theme="apple_bento_glass"] input,
+    html[data-theme="apple_bento_glass"] textarea,
+    html[data-theme="apple_bento_glass"] select {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      border-color: #cbd5e1 !important;
+    }
+    #tool-search, #search-section, [data-search-target] {
+      scroll-margin-top: 130px;
+    }
+    @keyframes search-glow-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .search-highlight-pulse {
+      animation: search-glow-pulse 0.4s ease-in-out 2;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.45) !important;
+      border-color: rgb(16, 185, 129) !important;
+    }
   </style>
 
   <!-- Structured Data JSON-LD (WebSite & SearchAction) -->
@@ -241,18 +289,11 @@
   <!-- Tech Stack Scripts (Alpine.js / Canvas loop / Terminal runtime) -->
   
         <script>
-        // Reading Progress Bar
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            const bar = document.getElementById('reading-bar');
-            if (bar) bar.style.width = scrolled + '%';
-        });
+        // Terminal Keyboard Shortcut (Ctrl+K or /) & Toast Notification Runtime
         window.showToast = function(msg) {
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-6 right-6 z-50 bg-[#27272a] dark:bg-[#f4f4f5] text-[#f4f4f5] dark:text-[#27272a] text-xs px-4 py-2.5 rounded shadow-lg font-serif italic';
-            toast.textContent = msg;
+            toast.className = 'fixed bottom-6 right-6 z-50 bg-[#10b981] text-black font-mono text-xs px-4 py-2.5 rounded-lg shadow-2xl font-bold flex items-center space-x-2 animate-bounce';
+            toast.innerHTML = '<span>></span><span>' + msg + '</span>';
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 2500);
         };
@@ -262,24 +303,30 @@
   <!-- Google AdSense Monetization (Activated when site traffic qualifies and client ID is set) -->
   
 </head>
-<body class="bg-[#fcfbf9] dark:bg-[#18181b] text-[#27272a] dark:text-[#f4f4f5] min-h-screen flex flex-col transition-colors duration-200">
+<body class="bg-[#0c0e14] text-[#e2e8f0] min-h-screen flex flex-col transition-colors duration-200">
 
-  
-  <div id="reading-bar" class="fixed top-0 left-0 h-1 bg-[#b45309] z-[100] transition-all duration-100" style="width: 0%"></div>
   
 
   <!-- Header Navigation (Responsive Desktop & Mobile) -->
-  <header class="sticky top-0 z-50 bg-[#fcfbf9]/90 dark:bg-[#18181b]/90 backdrop-blur-md border-b border-[#e4e4e7] dark:border-[#27272a]">
+  <header class="sticky top-0 z-50 bg-[#11141d]/90 backdrop-blur-md border-b border-[#1e2333]">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
       <!-- Brand & Terminal Indicator -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         
+        <div class="hidden sm:flex items-center space-x-1.5 mr-1 sm:mr-2">
+          <span class="w-3 h-3 rounded-full terminal-dot-red inline-block"></span>
+          <span class="w-3 h-3 rounded-full terminal-dot-yellow inline-block"></span>
+          <span class="w-3 h-3 rounded-full terminal-dot-green inline-block"></span>
+        </div>
+        
 
         <a href="/" class="flex items-center space-x-2.5 sm:space-x-3 group">
-          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-black text-base sm:text-lg bg-[#b45309] hover:bg-[#92400e] text-white font-medium rounded-lg">
+          
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-black text-base sm:text-lg bg-[#10b981] hover:bg-[#059669] text-black font-bold tracking-tight shadow-[0_0_15px_rgba(16,185,129,0.3)]">
             S
           </div>
+          
           <span class="text-base sm:text-lg font-extrabold tracking-tight truncate max-w-[150px] sm:max-w-none">
             SeoKit Studio
           </span>
@@ -300,10 +347,10 @@
           </button>
 
           <!-- Dropdown Panel (Categorized & Compact) -->
-          <div id="tools-dropdown-panel" class="hidden absolute left-0 mt-1.5 w-72 sm:w-80 rounded-2xl bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] shadow-2xl z-50 p-2 font-mono text-xs backdrop-blur-xl">
+          <div id="tools-dropdown-panel" class="hidden absolute left-0 mt-1.5 w-72 sm:w-80 rounded-2xl bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] shadow-2xl z-50 p-2 font-mono text-xs backdrop-blur-xl">
             <div class="flex items-center justify-between px-2.5 py-1 text-[10px] uppercase tracking-wider opacity-50 border-b border-white/10 mb-1">
               <span>Developer Tools Index</span>
-              <span>15 All Tools</span>
+              <span>20 All Tools</span>
             </div>
             <div class="max-h-72 overflow-y-auto space-y-0.5">
               
@@ -427,9 +474,49 @@
                 <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
               </a>
               
+              <a href="/opengraph-card-preview" title="OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Card Preview</div>
+                  <div class="text-[10px] opacity-50 truncate">Test and visualize how your webpage links appear when shared across Twitter/X, Facebook, LinkedIn, and messaging apps before publishing.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/hreflang-tag-generator" title="International hreflang Tag Matrix & XML Sitemap Generator" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Hreflang Gen</div>
+                  <div class="text-[10px] opacity-50 truncate">Generate valid, reciprocal hreflang alternate tags for multi-region and multi-language websites with automatic x-default fallback.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/robots-txt-generator" title="Robots.txt Generator & AI Crawler Directive Syntax Linter" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Robots.txt</div>
+                  <div class="text-[10px] opacity-50 truncate">Create compliant robots.txt directives for Googlebot, Bingbot, and AI web crawlers (GPTBot, ClaudeBot) with automatic sitemap linkage.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/schema-json-ld-generator" title="Schema.org JSON-LD Generator - Rich Results Structured Data Maker" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Schema Gen</div>
+                  <div class="text-[10px] opacity-50 truncate">Generate valid JSON-LD schema markup for WebApplication, FAQPage, Article, and Products to qualify for Google SERP rich results.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/keyword-density-analyzer" title="Keyword Density Analyzer - On-Page SEO Term Frequency & N-Gram Counter" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Keyword Density</div>
+                  <div class="text-[10px] opacity-50 truncate">Calculate exact keyword densities, term frequencies, and N-gram distributions to optimize content and prevent Google stuffing penalties.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
             </div>
             <div class="mt-1.5 pt-1.5 border-t border-white/10 px-2 flex items-center justify-between">
-              <a href="/#tools-grid" class="text-[11px] font-bold hover:underline flex items-center space-x-1" style="color: #b45309">
+              <a href="/#tools-grid" class="text-[11px] font-bold hover:underline flex items-center space-x-1" style="color: #10b981">
                 <span>Browse All</span>
                 <span>&rarr;</span>
               </a>
@@ -449,66 +536,24 @@
       <!-- Action Items & Language Selector & Quick Search & Mobile Hamburger -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         <!-- Quick Search Trigger in Header -->
-        <button id="global-search-btn" type="button" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/15 hover:bg-black/30 text-xs font-mono opacity-80 hover:opacity-100 transition" title="Search tools by keyword, format... (Press / to focus)">
+        <button id="global-search-btn" type="button" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-black/15 hover:bg-black/30 text-xs font-mono opacity-80 hover:opacity-100 transition" title="Search tools by keyword, format... (Press / to focus)">
           <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
           <span class="hidden sm:inline opacity-70">Search</span>
-          <kbd class="hidden sm:inline text-[9px] px-1 py-0.5 rounded border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] opacity-50 bg-black/20 font-mono">Ctrl+K</kbd>
+          <kbd class="hidden sm:inline text-[9px] px-1 py-0.5 rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50 bg-black/20 font-mono">Ctrl+K</kbd>
         </button>
 
-        <!-- Interactive Multi-Theme Selector Dropdown -->
-        <div class="relative inline-block text-left" id="theme-selector-container">
-          <button id="theme-toggle-btn" type="button" class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:opacity-90 transition bg-black/20" title="Theme Style">
-            <span id="theme-current-icon" class="text-sm leading-none">🖤</span>
-            <span id="theme-current-name" class="hidden xl:inline text-xs font-medium">Terminal Black</span>
-            <svg class="w-3 h-3 opacity-60 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div id="theme-dropdown-menu" class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] z-50 py-1.5 font-mono text-xs shadow-2xl backdrop-blur-xl">
-            <div class="px-3 py-1 text-[10px] uppercase tracking-wider opacity-50 border-b border-white/10 mb-1">
-              Theme Style
-            </div>
-            <button type="button" onclick="window.switchTheme('terminal_dev', true)" data-theme-opt="terminal_dev" class="w-full flex items-center justify-between px-3 py-2 hover:bg-white/10 transition text-left group">
-              <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-[#10b981] inline-block shadow-[0_0_6px_#10b981]"></span>
-                <span class="font-medium group-hover:text-emerald-400 transition">Terminal Black</span>
-              </div>
-              <span class="theme-check text-emerald-400 font-bold opacity-0">&check;</span>
-            </button>
-            <button type="button" onclick="window.switchTheme('cyber_electric', true)" data-theme-opt="cyber_electric" class="w-full flex items-center justify-between px-3 py-2 hover:bg-white/10 transition text-left group">
-              <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-[#38bdf8] inline-block shadow-[0_0_6px_#38bdf8]"></span>
-                <span class="font-medium group-hover:text-sky-400 transition">Cyber Neon</span>
-              </div>
-              <span class="theme-check text-sky-400 font-bold opacity-0">&check;</span>
-            </button>
-            <button type="button" onclick="window.switchTheme('midnight_purple', true)" data-theme-opt="midnight_purple" class="w-full flex items-center justify-between px-3 py-2 hover:bg-white/10 transition text-left group">
-              <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-[#c084fc] inline-block shadow-[0_0_6px_#c084fc]"></span>
-                <span class="font-medium group-hover:text-purple-400 transition">Midnight Purple</span>
-              </div>
-              <span class="theme-check text-purple-400 font-bold opacity-0">&check;</span>
-            </button>
-            <button type="button" onclick="window.switchTheme('swiss_minimal', true)" data-theme-opt="swiss_minimal" class="w-full flex items-center justify-between px-3 py-2 hover:bg-white/10 transition text-left group">
-              <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-[#2563eb] inline-block shadow-[0_0_6px_#2563eb]"></span>
-                <span class="font-medium group-hover:text-blue-500 transition">Swiss Minimal</span>
-              </div>
-              <span class="theme-check text-blue-500 font-bold opacity-0">&check;</span>
-            </button>
-          </div>
-        </div>
+
 
         <!-- 7-Language International Dropdown -->
         <div class="relative inline-block text-left" id="lang-container">
-          <button id="lang-toggle-btn" type="button" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:opacity-90 transition bg-black/20">
+          <button id="lang-toggle-btn" type="button" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-90 transition bg-black/20">
             <span>[EN]</span>
             <span class="font-bold">EN</span>
             <span class="text-[9px] opacity-60">&darr;</span>
           </button>
-          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-36 rounded-xl bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-[0_1px_3px_rgba(0,0,0,0.05)] z-50 py-1.5 font-mono text-xs shadow-2xl">
+          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-36 rounded-xl bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-50 py-1.5 font-mono text-xs shadow-2xl">
             
             <a href="/seo-technical-audit-meta-tag-analyzer-free-online" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition font-bold text-emerald-400">
               <span>[EN] English</span>
@@ -549,7 +594,7 @@
         </div>
 
         <!-- Mobile Menu Toggle Button (Visible on mobile <768px) -->
-        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:opacity-80 transition flex items-center justify-center bg-black/20" aria-label="Toggle Navigation Menu">
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-80 transition flex items-center justify-center bg-black/20" aria-label="Toggle Navigation Menu">
           <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -561,46 +606,25 @@
     </div>
 
     <!-- Mobile Collapsible Navigation Menu Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-[#e4e4e7] dark:border-[#27272a] bg-[#fcfbf9]/90 dark:bg-[#18181b]/90 backdrop-blur-md px-4 pt-3 pb-5 space-y-2 backdrop-blur-lg">
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#1e2333] bg-[#11141d]/90 backdrop-blur-md px-4 pt-3 pb-5 space-y-2 backdrop-blur-lg">
       <a href="/" class="block px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/10 transition">Home</a>
 
-      <!-- Mobile Theme Switcher Bar -->
-      <div class="py-2 border-b border-white/10 mb-2">
-        <div class="text-[10px] uppercase font-mono opacity-50 mb-1.5">Theme Style</div>
-        <div class="grid grid-cols-4 gap-1.5">
-          <button onclick="window.switchTheme('terminal_dev', true)" title="Terminal Black" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] mb-1"></span>
-            <span class="truncate max-w-full">Terminal</span>
-          </button>
-          <button onclick="window.switchTheme('cyber_electric', true)" title="Cyber Neon" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#38bdf8] mb-1"></span>
-            <span class="truncate max-w-full">Cyber</span>
-          </button>
-          <button onclick="window.switchTheme('midnight_purple', true)" title="Midnight Purple" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#c084fc] mb-1"></span>
-            <span class="truncate max-w-full">Purple</span>
-          </button>
-          <button onclick="window.switchTheme('swiss_minimal', true)" title="Swiss Minimal" class="p-1.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 flex flex-col items-center text-[10px] font-mono hover:bg-white/10 transition">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#2563eb] mb-1"></span>
-            <span class="truncate max-w-full">Minimal</span>
-          </button>
-        </div>
-      </div>
+
 
       <!-- Quick Search Trigger in Mobile Drawer -->
-      <button id="mobile-search-trigger" type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/20 text-xs font-mono opacity-80">
+      <button id="mobile-search-trigger" type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono opacity-80">
         <span class="flex items-center space-x-2">
           <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
           <span>Search tools by keyword, format... (Press / to focus)</span>
         </span>
-        <kbd class="text-[10px] px-1.5 py-0.5 rounded border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] opacity-50">/</kbd>
+        <kbd class="text-[10px] px-1.5 py-0.5 rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50">/</kbd>
       </button>
 
       <!-- Tools Group in Mobile Drawer -->
-      <div class="pt-2 border-t border-[#e4e4e7] dark:border-[#27272a]">
-        <div class="text-[10px] font-mono uppercase tracking-wider opacity-50 px-3 mb-1">All Tools (15)</div>
+      <div class="pt-2 border-t border-[#1e2333]">
+        <div class="text-[10px] font-mono uppercase tracking-wider opacity-50 px-3 mb-1">All Tools (20)</div>
         <div class="space-y-1 max-h-60 overflow-y-auto">
           
           <a href="/opengraph-card-preview" title="OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
@@ -678,6 +702,31 @@
             <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
           </a>
           
+          <a href="/opengraph-card-preview" title="OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Card Preview</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/hreflang-tag-generator" title="International hreflang Tag Matrix & XML Sitemap Generator" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Hreflang Gen</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/robots-txt-generator" title="Robots.txt Generator & AI Crawler Directive Syntax Linter" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Robots.txt</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/schema-json-ld-generator" title="Schema.org JSON-LD Generator - Rich Results Structured Data Maker" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Schema Gen</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/keyword-density-analyzer" title="Keyword Density Analyzer - On-Page SEO Term Frequency & N-Gram Counter" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Keyword Density</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
         </div>
       </div>
     </div>
@@ -705,146 +754,207 @@
 
     
 <div class="max-w-4xl mx-auto">
-  <div class="bg-white dark:bg-[#202024] rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] p-4 sm:p-6 md:p-8">
-    <div class="border-b border-[#e4e4e7] dark:border-[#27272a] pb-4 sm:pb-6">
+  <div class="bg-[#11141d] rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-[#1e2333] hover:border-[#10b981]/50 p-4 sm:p-6 md:p-8">
+    <div class="border-b border-[#1e2333] pb-4 sm:pb-6">
       <div class="flex items-center justify-between mb-2 sm:mb-3">
-        <div class="inline-flex items-center px-2 py-0.5 rounded text-[11px] bg-[#fef3c7] dark:bg-[#78350f]/30 text-[#92400e] dark:text-[#fde68a] text-xs font-serif italic font-mono">
-          <span>[ENGINE: Semantic Classless]</span>
+        <div class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 font-mono">
+          <span>[ENGINE: Vanilla Micro-Reactive]</span>
         </div>
-        <span class="text-[10px] sm:text-[11px] font-mono opacity-50">Instant Client-Side</span>
+        <span class="text-[10px] sm:text-[11px] font-mono opacity-60">100% Client-Side Sandbox</span>
       </div>
-      <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight break-words">Seo Technical Audit & Meta Tag Analyzer Free Online - Free Online Tool</h1>
-      <p class="text-xs sm:text-sm opacity-70 mt-1.5 sm:mt-2 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer free online tool. Fast, accurate, and completely free in your browser.</p>
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">Seo Technical Audit & Meta Tag Analyzer Free Online - Free Online Tool</h1>
+      <p class="text-xs sm:text-sm opacity-70 mt-1.5 leading-relaxed">Use the best online SEO Technical Audit & Meta Tag Analyzer free online tool. Fast, accurate, and completely free in your browser.</p>
     </div>
 
-    <!-- Tool Interactive Workspace -->
-    <div class="mt-6 sm:mt-8 space-y-4 sm:space-y-5">
-      <div>
-        <div class="flex items-center justify-between mb-2">
-          <label for="input-data" class="text-xs font-bold uppercase tracking-wider opacity-80 font-mono">Input Payload / Query</label>
-          <button id="btn-sample" class="text-xs hover:underline font-mono opacity-60 hover:opacity-100 transition">Load Sample Data</button>
-        </div>
-        <textarea id="input-data" rows="5" placeholder="Enter or paste your text, JSON, or code snippet here (Press Ctrl+Enter to execute)..." class="w-full rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/10 dark:bg-black/30 p-3 sm:p-4 text-xs sm:text-sm font-mono focus:outline-none transition"></textarea>
-      </div>
+    <!-- Interactive Calculator Engine Workspace -->
+    <div class="mt-6 sm:mt-8 space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="calc-base-val" class="text-xs font-bold uppercase tracking-wider font-mono opacity-80">Input Payload / Query</label>
+              <span class="text-xs font-mono opacity-60">USD / Units</span>
+            </div>
+            <input type="number" id="calc-base-val" value="50000" class="w-full text-lg sm:text-2xl font-bold font-mono px-4 py-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/10 dark:bg-black/30 focus:outline-none transition">
+          </div>
 
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
-        <button id="btn-process" class="w-full sm:w-auto px-6 py-2.5 rounded-xl font-bold transition flex items-center justify-center space-x-2 bg-[#b45309] hover:bg-[#92400e] text-white font-medium rounded-lg">
-          <span>Run Execution</span>
-        </button>
-        <button id="btn-clear" class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-semibold border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] hover:opacity-80 transition text-center">
-          Clear
-        </button>
-      </div>
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono opacity-75 mb-1">
+              <span>Slider Adjustment</span>
+              <span id="calc-range-lbl">$50,000</span>
+            </div>
+            <input type="range" id="calc-slider" min="1000" max="250000" step="1000" value="50000" class="w-full accent-emerald-500 cursor-pointer">
+          </div>
 
-      <div>
-        <div class="flex items-center justify-between mb-2">
-          <label for="output-data" class="text-xs font-bold uppercase tracking-wider opacity-80 font-mono">Processed Result</label>
-          <button id="btn-copy" class="text-xs font-mono font-bold hover:underline transition opacity-70 hover:opacity-100" style="color: #b45309">
-            Copy to Clipboard
-          </button>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider font-mono opacity-80 mb-2">Computation Factor / Tier</label>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="calc-factor-btn active px-3.5 py-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 text-xs font-mono font-bold bg-white/20" data-factor="1.0">Standard (1×)</button>
+              <button type="button" class="calc-factor-btn px-3.5 py-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 text-xs font-mono opacity-70 hover:opacity-100" data-factor="1.25">Boost (1.25×)</button>
+              <button type="button" class="calc-factor-btn px-3.5 py-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 text-xs font-mono opacity-70 hover:opacity-100" data-factor="1.5">Pro (1.5×)</button>
+              <button type="button" class="calc-factor-btn px-3.5 py-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 text-xs font-mono opacity-70 hover:opacity-100" data-factor="2.0">Double (2×)</button>
+            </div>
+          </div>
         </div>
-        <textarea id="output-data" rows="5" readonly placeholder="Output will appear here instantly..." class="w-full rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/5 dark:bg-black/20 p-3 sm:p-4 text-xs sm:text-sm font-mono opacity-90 focus:outline-none transition"></textarea>
+
+        <!-- Output Breakdown Card -->
+        <div class="p-5 sm:p-6 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider font-mono opacity-70">Processed Result</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">ESTIMATED</span>
+          </div>
+          <div id="calc-net-display" class="text-3xl sm:text-4xl font-extrabold font-mono tracking-tight" style="color: #10b981">
+            $41,000.00
+          </div>
+
+          <div class="border-t border-[#1e2333] hover:border-[#10b981]/50 pt-3 space-y-2 text-xs font-mono">
+            <div class="flex justify-between opacity-75">
+              <span>Gross Base:</span>
+              <span id="calc-sub-gross">$50,000.00</span>
+            </div>
+            <div class="flex justify-between opacity-75">
+              <span>Adjustment (-18%):</span>
+              <span id="calc-sub-tax">-$9,000.00</span>
+            </div>
+            <div class="flex justify-between font-bold border-t border-[#1e2333] hover:border-[#10b981]/50 pt-1.5">
+              <span>Net Effective Yield:</span>
+              <span id="calc-sub-yield" class="text-emerald-400">82.0%</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2">
+            <button id="calc-btn-copy" class="flex-1 py-2.5 rounded-xl font-bold transition text-xs sm:text-sm flex items-center justify-center space-x-1.5 bg-[#10b981] hover:bg-[#059669] text-black font-bold tracking-tight shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+              <span>Copy to Clipboard</span>
+            </button>
+            <button id="calc-btn-reset" class="px-4 py-2.5 rounded-xl text-xs font-semibold border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-80 transition">
+              Clear
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
+    
     <!-- SEO Documentation -->
-    <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#e4e4e7] dark:border-[#27272a] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#1e2333] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       <div>
         <h2 class="text-sm sm:text-base font-bold mb-2 sm:mb-2.5">How to Use (Seo Technical Audit & Me)</h2>
         <p class="text-xs opacity-75 leading-relaxed">
           Paste or type your input above, execute instantly, and copy verified outputs.
         </p>
         <h3 class="text-xs font-bold uppercase tracking-wider opacity-70 mt-3 sm:mt-4 mb-2">Target Search Capabilities</h3>
-        <ul class="space-y-0.5"><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#b45309'>+</span>SEO Technical Audit & Meta Tag Analyzer best</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#b45309'>+</span>SEO Technical Audit & Meta Tag Analyzer fast</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#b45309'>+</span>SEO Technical Audit & Meta Tag Analyzer instant</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#b45309'>+</span>SEO Technical Audit & Meta Tag Analyzer calculator</li></ul>
+        <ul class="space-y-0.5"><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>SEO Technical Audit & Meta Tag Analyzer best</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>SEO Technical Audit & Meta Tag Analyzer fast</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>SEO Technical Audit & Meta Tag Analyzer instant</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>SEO Technical Audit & Meta Tag Analyzer calculator</li></ul>
       </div>
       <div>
         <h2 class="text-sm sm:text-base font-bold mb-2 sm:mb-2.5">100% Client-Side Privacy</h2>
         <div class="space-y-2">
-          <div class="p-3 sm:p-3.5 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/5 dark:bg-white/5">
+          <div class="p-3 sm:p-3.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5">
             <div class="text-xs font-bold">100% Client-Side Privacy</div>
             <p class="text-[11px] opacity-60 mt-0.5">Your sensitive data never leaves your device. No analytics, tracking, or server logs.</p>
           </div>
-          <div class="p-3 sm:p-3.5 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-black/5 dark:bg-white/5">
+          <div class="p-3 sm:p-3.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5">
             <div class="text-xs font-bold">Zero Latency & Offline Ready</div>
             <p class="text-[11px] opacity-60 mt-0.5">Runs directly in your browser with sub-millisecond execution time.</p>
           </div>
         </div>
       </div>
     </div>
+        
   </div>
 </div>
 
 <script>
 (function() {
-  const inputEl = document.getElementById('input-data');
-  const outputEl = document.getElementById('output-data');
-  const btnProcess = document.getElementById('btn-process');
-  const btnClear = document.getElementById('btn-clear');
-  const btnCopy = document.getElementById('btn-copy');
-  const btnSample = document.getElementById('btn-sample');
+  const baseInput = document.getElementById('calc-base-val');
+  const slider = document.getElementById('calc-slider');
+  const sliderLbl = document.getElementById('calc-range-lbl');
+  const netDisp = document.getElementById('calc-net-display');
+  const grossDisp = document.getElementById('calc-sub-gross');
+  const taxDisp = document.getElementById('calc-sub-tax');
+  const yieldDisp = document.getElementById('calc-sub-yield');
+  const copyBtn = document.getElementById('calc-btn-copy');
+  const resetBtn = document.getElementById('calc-btn-reset');
+  const factorBtns = document.querySelectorAll('.calc-factor-btn');
 
-  function processData() {
-    const val = inputEl.value.trim();
-    if (!val) {
-      outputEl.value = '';
-      return;
-    }
-    try {
-      // Auto-detect JSON formatting or utility transform
-      const parsed = JSON.parse(val);
-      outputEl.value = JSON.stringify(parsed, null, 2);
-    } catch(e) {
-      outputEl.value = val.toUpperCase();
-    }
-    if (window.showToast) window.showToast('Processed Result');
+  let currentFactor = 1.0;
+
+  function formatMoney(num) {
+    return '$' + num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
-  btnProcess.addEventListener('click', processData);
+  function recalculate() {
+    const raw = parseFloat(baseInput.value) || 0;
+    const gross = raw * currentFactor;
+    const tax = gross * 0.18;
+    const net = gross - tax;
+    const effYield = gross > 0 ? ((net / gross) * 100).toFixed(1) : '0.0';
 
-  inputEl.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-      e.preventDefault();
-      processData();
-    }
+    slider.value = Math.min(Math.max(raw, 1000), 250000);
+    sliderLbl.textContent = '$' + raw.toLocaleString();
+    netDisp.textContent = formatMoney(net);
+    grossDisp.textContent = formatMoney(gross);
+    taxDisp.textContent = '-' + formatMoney(tax);
+    yieldDisp.textContent = effYield + '%';
+  }
+
+  baseInput.addEventListener('input', recalculate);
+  slider.addEventListener('input', () => {
+    baseInput.value = slider.value;
+    recalculate();
   });
 
-  btnClear.addEventListener('click', () => {
-    inputEl.value = '';
-    outputEl.value = '';
-    if (window.showToast) window.showToast('Clear');
+  factorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      factorBtns.forEach(b => {
+        b.classList.remove('active', 'bg-white/20', 'font-bold');
+        b.classList.add('opacity-70');
+      });
+      btn.classList.add('active', 'bg-white/20', 'font-bold');
+      btn.classList.remove('opacity-70');
+      currentFactor = parseFloat(btn.getAttribute('data-factor')) || 1.0;
+      recalculate();
+    });
   });
 
-  btnSample.addEventListener('click', () => {
-    inputEl.value = JSON.stringify({ "service": "SeoKit Studio", "topic": "SEO Technical Audit & Meta Tag Analyzer free online", "status": "active", "timestamp": Date.now() }, null, 2);
-    processData();
-  });
-
-  btnCopy.addEventListener('click', () => {
-    if (!outputEl.value) return;
-    navigator.clipboard.writeText(outputEl.value).then(() => {
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(netDisp.textContent.trim()).then(() => {
       if (window.showToast) window.showToast('Copied to clipboard!');
     });
   });
+
+  resetBtn.addEventListener('click', () => {
+    baseInput.value = '50000';
+    currentFactor = 1.0;
+    factorBtns.forEach((b, idx) => {
+      b.classList.toggle('active', idx === 0);
+      b.classList.toggle('bg-white/20', idx === 0);
+      b.classList.toggle('font-bold', idx === 0);
+      b.classList.toggle('opacity-70', idx !== 0);
+    });
+    recalculate();
+  });
+
+  recalculate();
 })();
 </script>
-
+        
 
     
   </main>
 
   <!-- Internal Linking Matrix -->
-  <section class="border-t border-[#e4e4e7] dark:border-[#27272a] py-12 px-4 sm:px-6 lg:px-8 opacity-95">
+  <section class="border-t border-[#1e2333] py-12 px-4 sm:px-6 lg:px-8 opacity-95">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between mb-6">
         <h3 class="text-sm font-bold uppercase tracking-wider opacity-80 font-mono">
           [+] Developer Tools Index
         </h3>
-        <span class="text-xs opacity-60 font-mono">15 All Tools</span>
+        <span class="text-xs opacity-60 font-mono">20 All Tools</span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         
-        <a href="/opengraph-card-preview" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/opengraph-card-preview" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester
           </div>
@@ -853,7 +963,7 @@
           </p>
         </a>
         
-        <a href="/hreflang-tag-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/hreflang-tag-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             International hreflang Tag Matrix & XML Sitemap Generator
           </div>
@@ -862,7 +972,7 @@
           </p>
         </a>
         
-        <a href="/robots-txt-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/robots-txt-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Robots.txt Generator & AI Crawler Directive Syntax Linter
           </div>
@@ -871,7 +981,7 @@
           </p>
         </a>
         
-        <a href="/schema-json-ld-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/schema-json-ld-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Schema.org JSON-LD Generator - Rich Results Structured Data Maker
           </div>
@@ -880,7 +990,7 @@
           </p>
         </a>
         
-        <a href="/keyword-density-analyzer" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/keyword-density-analyzer" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Keyword Density Analyzer - On-Page SEO Term Frequency & N-Gram Counter
           </div>
@@ -889,7 +999,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Free Online - Free Online Tool
           </div>
@@ -898,7 +1008,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-generator" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Generator - Free Online Tool
           </div>
@@ -907,7 +1017,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-viewer" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-viewer" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Viewer - Free Online Tool
           </div>
@@ -916,7 +1026,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-without-watermark" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-without-watermark" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Without Watermark - Free Online Tool
           </div>
@@ -925,7 +1035,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-vs-alternatives" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-vs-alternatives" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Vs Alternatives - Free Online Tool
           </div>
@@ -934,7 +1044,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-calculator-2" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-calculator-2" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Calculator 2 - Free Online Tool
           </div>
@@ -943,7 +1053,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-validator-2" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-validator-2" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Validator 2 - Free Online Tool
           </div>
@@ -952,7 +1062,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-download-2" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-download-2" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Download 2 - Free Online Tool
           </div>
@@ -961,7 +1071,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-tips-2" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-tips-2" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Tips 2 - Free Online Tool
           </div>
@@ -970,7 +1080,7 @@
           </p>
         </a>
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-instant-3" class="p-3.5 rounded-lg border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] transition group block">
+        <a href="/seo-technical-audit-meta-tag-analyzer-instant-3" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
           <div class="text-xs font-bold truncate group-hover:underline">
             Seo Technical Audit & Meta Tag Analyzer Instant 3 - Free Online Tool
           </div>
@@ -979,12 +1089,57 @@
           </p>
         </a>
         
+        <a href="/opengraph-card-preview" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            OpenGraph & Twitter Card Preview Simulator - Real-Time Social Card Tester
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Test and visualize how your webpage links appear when shared across Twitter/X, Facebook, LinkedIn, and messaging apps before publishing.
+          </p>
+        </a>
+        
+        <a href="/hreflang-tag-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            International hreflang Tag Matrix & XML Sitemap Generator
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Generate valid, reciprocal hreflang alternate tags for multi-region and multi-language websites with automatic x-default fallback.
+          </p>
+        </a>
+        
+        <a href="/robots-txt-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Robots.txt Generator & AI Crawler Directive Syntax Linter
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Create compliant robots.txt directives for Googlebot, Bingbot, and AI web crawlers (GPTBot, ClaudeBot) with automatic sitemap linkage.
+          </p>
+        </a>
+        
+        <a href="/schema-json-ld-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Schema.org JSON-LD Generator - Rich Results Structured Data Maker
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Generate valid JSON-LD schema markup for WebApplication, FAQPage, Article, and Products to qualify for Google SERP rich results.
+          </p>
+        </a>
+        
+        <a href="/keyword-density-analyzer" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Keyword Density Analyzer - On-Page SEO Term Frequency & N-Gram Counter
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Calculate exact keyword densities, term frequencies, and N-gram distributions to optimize content and prevent Google stuffing penalties.
+          </p>
+        </a>
+        
       </div>
     </div>
   </section>
 
   <!-- Global Multi-Language Matrix -->
-  <section class="border-t border-[#e4e4e7] dark:border-[#27272a] py-10 px-4 sm:px-6 lg:px-8 opacity-95 bg-black/[0.02] dark:bg-white/[0.02]">
+  <section class="border-t border-[#1e2333] py-10 px-4 sm:px-6 lg:px-8 opacity-95 bg-black/[0.02] dark:bg-white/[0.02]">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
         <div>
@@ -992,7 +1147,7 @@
             <span>🌐</span> <span>Global Multi-Language Matrix</span>
           </h3>
           <p class="text-xs opacity-60 mt-0.5 font-mono">
-            7 Locales · 112 Localized Endpoints · 100% Client-Side
+            7 Locales · 147 Localized Endpoints · 100% Client-Side
           </p>
         </div>
         <span class="text-xs font-mono opacity-50">[EN] English (en)</span>
@@ -1000,46 +1155,46 @@
 
       <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5">
         
-        <a href="/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ring-2 ring-[#10b981]/50">
+        <a href="/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ring-2 ring-[#10b981]/50">
           <div class="text-xl mb-1">[EN]</div>
           <div class="text-xs font-bold truncate group-hover:underline">English</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">15 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">20 All Tools</div>
         </a>
         
-        <a href="/zh/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/zh/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[ZH]</div>
           <div class="text-xs font-bold truncate group-hover:underline">简体中文</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">15 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">20 All Tools</div>
         </a>
         
-        <a href="/es/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/es/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[ES]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Español</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">15 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">20 All Tools</div>
         </a>
         
-        <a href="/pt/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/pt/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[PT]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Português</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">15 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">20 All Tools</div>
         </a>
         
-        <a href="/de/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/de/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[DE]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Deutsch</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">15 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">20 All Tools</div>
         </a>
         
-        <a href="/fr/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/fr/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[FR]</div>
           <div class="text-xs font-bold truncate group-hover:underline">Français</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">15 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">20 All Tools</div>
         </a>
         
-        <a href="/ja/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white dark:bg-[#202024] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+        <a href="/ja/seo-technical-audit-meta-tag-analyzer-free-online" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
           <div class="text-xl mb-1">[JA]</div>
           <div class="text-xs font-bold truncate group-hover:underline">日本語</div>
-          <div class="text-[10px] opacity-50 font-mono mt-1">15 All Tools</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">20 All Tools</div>
         </a>
         
       </div>
@@ -1047,7 +1202,7 @@
   </section>
 
   <!-- Comprehensive Multi-Column Footer -->
-  <footer class="border-t border-[#e4e4e7] dark:border-[#27272a] pt-12 pb-8 text-xs opacity-90">
+  <footer class="border-t border-[#1e2333] pt-12 pb-8 text-xs opacity-90">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Prominent Medical / Financial Compliance Disclaimer Banner -->
@@ -1069,7 +1224,7 @@
           <p class="text-[11px] opacity-70 leading-relaxed max-w-xs">
             Use the best online SEO Technical Audit & Meta Tag Analyzer free online tool. Fast, accurate, and completely free in your browser.
           </p>
-          <div class="p-2.5 rounded-xl border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] bg-white/5 font-mono text-[11px] text-[#10b981]">
+          <div class="p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-white/5 font-mono text-[11px] text-[#10b981]">
             🔒 100% Client-Side Sandbox: Zero server storage, zero data uploads.
           </div>
         </div>
@@ -1188,7 +1343,7 @@
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-[#e4e4e7] dark:border-[#27272a] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] opacity-60 font-mono">
+      <div class="border-t border-[#1e2333] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] opacity-60 font-mono">
         <div>
           &copy; 2026 <strong>SeoKit Studio</strong>. Fast, Client-Side Privacy & Cloudflare Edge Accelerated.
         </div>
@@ -1202,7 +1357,7 @@
   </footer>
 
   <!-- Floating Back to Top Button -->
-  <button id="back-to-top-btn" type="button" class="fixed bottom-6 right-6 p-2.5 rounded-full bg-white dark:bg-[#202024] border border-[#e4e4e7] dark:border-[#27272a] hover:border-[#b45309] shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-40 hover:scale-110 focus:outline-none" aria-label="Back to top" title="Back to top">
+  <button id="back-to-top-btn" type="button" class="fixed bottom-6 right-6 p-2.5 rounded-full bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-40 hover:scale-110 focus:outline-none" aria-label="Back to top" title="Back to top">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
     </svg>
@@ -1232,11 +1387,19 @@
     function triggerSearchFocus() {
       const searchInput = document.getElementById('tool-search');
       if (searchInput) {
-        searchInput.focus();
-        searchInput.select();
         searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          try {
+            searchInput.focus({ preventScroll: true });
+            searchInput.select();
+          } catch (e) {
+            searchInput.focus();
+          }
+          searchInput.classList.add('search-highlight-pulse');
+          setTimeout(() => searchInput.classList.remove('search-highlight-pulse'), 1200);
+        }, 300);
       } else {
-        window.location.href = '/#tool-search';
+        window.location.href = '/?focus_search=1#tool-search';
       }
     }
     const globalSearchBtn = document.getElementById('global-search-btn');
@@ -1271,11 +1434,9 @@
       });
     }
 
-    if (window.location.hash === '#tool-search') {
-      setTimeout(() => {
-        const s = document.getElementById('tool-search');
-        if (s) { s.focus(); s.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-      }, 300);
+    const searchParams = new URLSearchParams(window.location.search);
+    if (window.location.hash === '#tool-search' || searchParams.get('focus_search') === '1' || searchParams.has('q')) {
+      setTimeout(triggerSearchFocus, 250);
     }
 
     // 0.4 Dynamic Multi-Theme Switcher
@@ -1328,7 +1489,7 @@
       if (saved && THEME_NAMES[saved]) {
         window.switchTheme(saved, false);
       } else {
-        window.switchTheme('editorial_paper', false);
+        window.switchTheme('terminal_dev', false);
       }
     } catch (e) {}
 
