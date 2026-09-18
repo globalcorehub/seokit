@@ -613,143 +613,52 @@
     
 
     
-<div class="max-w-5xl mx-auto">
+<div class="max-w-4xl mx-auto">
   <div class="bg-[#11141d] rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] border border-[#1e2333] hover:border-[#10b981]/50 p-4 sm:p-6 md:p-8">
-    <!-- Header -->
     <div class="border-b border-[#1e2333] pb-4 sm:pb-6">
       <div class="flex items-center justify-between mb-2 sm:mb-3">
         <div class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 font-mono font-bold">
-          <span>🔍 SEO Meta Tag & SERP Pixel Simulator</span>
+          <span>⚡ In-Browser SEO Meta Tag & Open Graph Audit Engine</span>
         </div>
-        <span class="text-[10px] sm:text-[11px] font-mono opacity-60">100% Client-Side • Google Search Snippet Audit</span>
+        <span class="text-[10px] sm:text-[11px] font-mono opacity-60">Zero-Execution HTML Template Parser • Private Local DOM Inspection</span>
       </div>
       <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">SEO Technical Audit & Meta Tag Analyzer</h1>
       <p class="text-xs sm:text-sm opacity-70 mt-1.5 leading-relaxed">Audit webpage meta titles, descriptions, canonicals, robots tags, and preview Google SERP display snippets in real time.</p>
     </div>
 
-    <!-- Workspace Form & Live SERP Grid -->
-    <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-      <!-- Form Controls (7 cols) -->
-      <div class="lg:col-span-7 space-y-4">
-        <div>
-          <div class="flex items-center justify-between mb-1">
-            <label class="text-xs font-mono font-bold opacity-80">Page Title (<title>)</label>
-            <span id="title-stats" class="text-[11px] font-mono text-emerald-400 font-bold">0 chars / 0 px</span>
-          </div>
-          <input id="meta-title" type="text" value="Best Free Online Webmaster Tools & SERP Simulator | SeoKit" class="w-full p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500">
-        </div>
-
-        <div>
-          <div class="flex items-center justify-between mb-1">
-            <label class="text-xs font-mono font-bold opacity-80">Meta Description (<meta name="description">)</label>
-            <span id="desc-stats" class="text-[11px] font-mono text-emerald-400 font-bold">0 chars</span>
-          </div>
-          <textarea id="meta-desc" rows="3" class="w-full p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500 leading-relaxed">Analyze page titles, meta descriptions, and OpenGraph tags in real-time. Optimize your SERP snippet click-through rates with pixel-accurate Google desktop and mobile simulation.</textarea>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-mono font-bold opacity-80 mb-1">Canonical URL</label>
-            <input id="meta-canonical" type="text" value="https://example.com/tools/seo-meta-analyzer" class="w-full p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500">
-          </div>
-          <div>
-            <label class="block text-xs font-mono font-bold opacity-80 mb-1">Robots Indexing Directive</label>
-            <select id="meta-robots" class="w-full p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500">
-              <option value="index, follow" selected>index, follow (Standard SEO)</option>
-              <option value="noindex, follow">noindex, follow (Hide from search)</option>
-              <option value="index, nofollow">index, nofollow (Do not follow links)</option>
-              <option value="noindex, nofollow">noindex, nofollow (Complete block)</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-mono font-bold opacity-80 mb-1">Social Image URL (og:image)</label>
-          <input id="meta-og-image" type="text" value="https://example.com/og-image.svg" class="w-full p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500">
-        </div>
-      </div>
-
-      <!-- Live SERP Simulator (5 cols) -->
-      <div class="lg:col-span-5 flex flex-col">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-xs font-mono font-bold uppercase tracking-wider opacity-80">Google SERP Live Snippet Preview</h3>
-          <div class="flex items-center gap-1.5 text-[11px] font-mono">
-            <button id="btn-serp-desktop" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">Desktop SERP</button>
-            <button id="btn-serp-mobile" class="px-2 py-0.5 rounded opacity-60 hover:opacity-100">Mobile SERP</button>
-          </div>
-        </div>
-
-        <!-- Google SERP Card Container -->
-        <div id="serp-container" class="p-4 rounded-xl border border-neutral-700 bg-[#202124] text-neutral-200 flex-grow shadow-lg">
-          <div class="flex items-center gap-2 mb-1.5">
-            <div class="w-6 h-6 rounded-full bg-emerald-600/30 flex items-center justify-center text-[10px] text-emerald-400 font-bold font-mono">G</div>
-            <div class="overflow-hidden">
-              <span id="serp-site-name" class="text-xs text-neutral-300 block font-sans truncate">example.com</span>
-              <span id="serp-breadcrumb" class="text-[11px] text-neutral-400 block font-sans truncate leading-none">https://example.com &gt; tools</span>
-            </div>
-          </div>
-          <div id="serp-title-display" class="text-base sm:text-lg text-[#8ab4f8] hover:underline cursor-pointer font-sans leading-snug font-normal">
-            Title Preview
-          </div>
-          <div id="serp-desc-display" class="text-xs sm:text-[13px] text-[#bdc1c6] font-sans mt-1 leading-normal">
-            Description preview snippet...
-          </div>
-        </div>
-
-        <!-- SEO Health Checklist -->
-        <div class="mt-4 p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/10 text-xs font-mono space-y-1.5">
-          <div class="font-bold opacity-80 mb-1">✓ SEO Health & Truncation Checklist</div>
-          <div id="chk-title" class="flex items-center gap-2 text-emerald-400"><span>•</span> <span id="chk-title-text">Title Pixel Length: OK</span></div>
-          <div id="chk-desc" class="flex items-center gap-2 text-emerald-400"><span>•</span> <span id="chk-desc-text">Description Length: OK</span></div>
-          <div id="chk-can" class="flex items-center gap-2 text-emerald-400"><span>•</span> <span>Canonical Tag: Valid HTTPS link</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Output Code Box -->
-    <div class="mt-6 border-t border-[#1e2333] hover:border-[#10b981]/50 pt-5">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-xs font-mono font-bold opacity-80">Generated SEO <head> HTML Code</span>
-        <button id="btn-copy-meta" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 text-black text-xs font-mono font-bold hover:bg-emerald-400 transition active:scale-95">
-          <span id="copy-meta-text">Copy Meta Tags</span>
-        </button>
-      </div>
-      <textarea id="meta-output-code" readonly rows="7" class="w-full p-4 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/40 text-xs font-mono text-emerald-300 focus:outline-none resize-y leading-relaxed"></textarea>
-    </div>
-
-    <!-- Documentation & FAQ -->
-    <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#1e2333] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <!-- Tool Form -->
+    <section class="audit-tool mt-6 space-y-4">
       <div>
-        <h2 class="text-sm sm:text-base font-bold mb-2 sm:mb-2.5">SEO Technical Audit & Meta Tag Analyzer</h2>
-        <p class="text-xs opacity-75 leading-relaxed mb-4">
-          Professional webmaster utility for <strong>serp preview google pixel length</strong>. Test titles, description character densities, and social sharing tags before deploying to production to maximize organic CTR.
-        </p>
-        <h3 class="text-xs font-bold uppercase tracking-wider opacity-70 mb-2">How to Audit & Optimize Meta Tags</h3>
-        <ol class="text-xs opacity-75 space-y-1.5 font-mono list-decimal list-inside mb-4">
-          <li>Type or paste your proposed webpage title into the title workspace.</li>
-          <li>Ensure title pixel width stays below ~580px (usually 50-60 characters).</li>
-          <li>Craft a compelling description between 120 and 160 characters.</li>
-          <li>Copy the production-ready HTML markup directly into your website's &lt;head&gt;.</li>
-        </ol>
-        <h3 class="text-xs font-bold uppercase tracking-wider opacity-70 mb-2">Related Search Queries</h3>
-        <ul class="space-y-0.5"><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>serp preview google pixel length</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>meta tag analyzer online</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>seo title length checker</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>meta description pixel checker</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>google snippet preview tool</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>technical seo audit tags</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>canonical tag checker</li><li class='flex items-center text-xs opacity-75 py-1 font-mono'><span class='mr-2' style='color:#10b981'>+</span>open graph preview checker</li></ul>
+        <label for="meta-input" class="block text-xs font-mono font-bold opacity-75 mb-1">Page HTML (Paste webpage source or <head> markup)</label>
+        <textarea id="meta-input" rows="6" class="w-full p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="<title>Example Page</title>&#10;<meta name=&quot;description&quot; content=&quot;Page description&quot;>&#10;<link rel=&quot;canonical&quot; href=&quot;https://example.com/&quot;>"></textarea>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="meta-analyze" class="px-4 py-2 text-xs rounded-xl font-mono font-bold bg-emerald-500 hover:bg-emerald-400 text-black transition active:scale-95 shadow-sm">Analyze Metadata</button>
+      </div>
+
+      <div class="mt-4">
+        <pre id="meta-output" aria-live="polite" class="w-full p-4 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/40 text-xs font-mono text-emerald-300 overflow-x-auto whitespace-pre-wrap break-all min-h-[5rem]"></pre>
+        <p id="tool-status" role="status" aria-live="polite" class="text-xs font-mono text-amber-400 mt-2"></p>
+      </div>
+    </section>
+
+    <!-- Technical Guide & FAQ -->
+    <div class="mt-10 pt-8 border-t border-[#1e2333] space-y-6">
+      <div>
+        <h2 class="text-sm sm:text-base font-bold mb-2">Technical SEO Tag Inspection Guide</h2>
+        <p class="text-xs opacity-75 leading-relaxed">Inspect and audit essential on-page tags (Title, Meta Description, Canonical URLs, Robots, and Open Graph attributes). Executes with zero network requests and zero JavaScript evaluation.</p>
       </div>
       <div>
-        <h2 class="text-sm sm:text-base font-bold mb-2 sm:mb-2.5">Frequently Asked Questions & SERP Guidelines</h2>
-        <div class="space-y-2.5">
-          <div class="p-3.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5">
-            <h4 class="text-xs font-bold mb-1">Why does pixel length matter more than character count?</h4>
-            <p class="text-[11px] opacity-70 leading-relaxed">
-              Google's search engine results container allocates a fixed width of approximately 600 pixels for desktop titles. Wider characters consume significantly more horizontal pixels.
-            </p>
+        <h3 class="text-xs font-bold uppercase font-mono tracking-wider opacity-80 mb-3">Frequently Asked Questions & Tag Audit Standards</h3>
+        <div class="space-y-3 text-xs">
+          <div class="p-3.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/10">
+            <h4 class="font-bold mb-1 opacity-90">How does this tool guarantee security against malicious scripts in pasted HTML?</h4>
+            <p class="opacity-70 leading-relaxed">Pasted markup is parsed inertly using HTML5 <template> fragments without attaching to the active DOM. Scripts, iframes, and onerror handlers never execute.</p>
           </div>
-          <div class="p-3.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5">
-            <h4 class="text-xs font-bold mb-1">100% Private Webmaster Sandbox</h4>
-            <p class="text-[11px] opacity-70 leading-relaxed">Your draft article titles, confidential landing page URLs, and meta tags are analyzed completely inside your browser memory.</p>
-          </div>
-          <div class="p-3.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5">
-            <h4 class="text-xs font-bold mb-1">Pixel-Accurate Canvas Simulation</h4>
-            <p class="text-[11px] opacity-70 leading-relaxed">Uses real-time DOM canvas metrics to calculate exact Arial font pixel widths as rendered by Google Search algorithms.</p>
+          <div class="p-3.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/10">
+            <h4 class="font-bold mb-1 opacity-90">Why is the canonical tag critical for multi-page architectures?</h4>
+            <p class="opacity-70 leading-relaxed">Canonical tags prevent duplicate content ambiguity and guide search engines to index your authoritative pillar pages.</p>
           </div>
         </div>
       </div>
@@ -758,128 +667,51 @@
 </div>
 
 <script>
-(function() {
-  const titleInp = document.getElementById('meta-title');
-  const descInp = document.getElementById('meta-desc');
-  const canInp = document.getElementById('meta-canonical');
-  const robSel = document.getElementById('meta-robots');
-  const ogImgInp = document.getElementById('meta-og-image');
-  const titleStats = document.getElementById('title-stats');
-  const descStats = document.getElementById('desc-stats');
-  const serpTitle = document.getElementById('serp-title-display');
-  const serpDesc = document.getElementById('serp-desc-display');
-  const serpBreadcrumb = document.getElementById('serp-breadcrumb');
-  const serpSiteName = document.getElementById('serp-site-name');
-  const outCode = document.getElementById('meta-output-code');
-  const copyBtn = document.getElementById('btn-copy-meta');
-  const copyText = document.getElementById('copy-meta-text');
-  const btnDesktop = document.getElementById('btn-serp-desktop');
-  const btnMobile = document.getElementById('btn-serp-mobile');
-  const serpCard = document.getElementById('serp-container');
+(function(){
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const msg = $('tool-status');
+  const missingText = '(missing)';
 
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-
-  function measureTextPixels(text, font) {
-    ctx.font = font || '20px Arial, sans-serif';
-    return Math.round(ctx.measureText(text).width);
+  function analyze(){
+    const input = $('meta-input').value;
+    if (!input.trim()) {
+      $('meta-output').textContent = '';
+      if (msg) msg.textContent = 'Paste HTML first.';
+      return;
+    }
+    const template = document.createElement('template');
+    template.innerHTML = input;
+    const doc = template.content;
+    const read = (selector, attr) => {
+      const el = doc.querySelector(selector);
+      return el ? (attr ? el.getAttribute(attr) : el.textContent) || '' : '';
+    };
+    const title = read('title');
+    const description = read('meta[name="description" i]', 'content');
+    const rows = [
+      ['Title', title],
+      ['Title characters', Array.from(title).length],
+      ['Description', description],
+      ['Description characters', Array.from(description).length],
+      ['Canonical', read('link[rel~="canonical" i]', 'href')],
+      ['Robots', read('meta[name="robots" i]', 'content')],
+      ['OG title', read('meta[property="og:title" i]', 'content')],
+      ['OG description', read('meta[property="og:description" i]', 'content')],
+      ['OG image', read('meta[property="og:image" i]', 'content')]
+    ];
+    $('meta-output').textContent = rows.map(([label, value]) => label + ': ' + (value === '' ? missingText : value)).join('\n');
+    if (msg) msg.textContent = '';
   }
 
-  function update() {
-    const t = titleInp.value.trim() || 'Untitled Page';
-    const d = descInp.value.trim() || 'No description provided.';
-    const c = canInp.value.trim() || 'https://example.com';
-    const r = robSel.value;
-    const ogImg = ogImgInp.value.trim();
-
-    const titlePx = measureTextPixels(t, '20px Arial, sans-serif');
-    const titleLen = t.length;
-    const descLen = d.length;
-
-    titleStats.textContent = titleLen + ' chars / ' + titlePx + ' px (Limit ~580px)';
-    if (titlePx > 580) {
-      titleStats.className = 'text-[11px] font-mono text-amber-400 font-bold';
-      document.getElementById('chk-title').className = 'flex items-center gap-2 text-amber-400';
-      document.getElementById('chk-title-text').textContent = 'Title Pixel Length: Truncated (' + titlePx + 'px > 580px)';
-    } else {
-      titleStats.className = 'text-[11px] font-mono text-emerald-400 font-bold';
-      document.getElementById('chk-title').className = 'flex items-center gap-2 text-emerald-400';
-      document.getElementById('chk-title-text').textContent = 'Title Pixel Length: Optimal (' + titlePx + 'px)';
+  $('meta-analyze').onclick = analyze;
+  $('meta-analyze').onkeydown = e => { if (e.key === 'Enter') analyze(); };
+  $('meta-input').addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      analyze();
     }
-
-    descStats.textContent = descLen + ' chars (Optimal: 120-160)';
-    if (descLen < 60 || descLen > 165) {
-      descStats.className = 'text-[11px] font-mono text-amber-400 font-bold';
-      document.getElementById('chk-desc').className = 'flex items-center gap-2 text-amber-400';
-      document.getElementById('chk-desc-text').textContent = 'Description Length: ' + (descLen < 60 ? 'Too short' : 'May be truncated') + ' (' + descLen + ' chars)';
-    } else {
-      descStats.className = 'text-[11px] font-mono text-emerald-400 font-bold';
-      document.getElementById('chk-desc').className = 'flex items-center gap-2 text-emerald-400';
-      document.getElementById('chk-desc-text').textContent = 'Description Length: Perfect (' + descLen + ' chars)';
-    }
-
-    serpTitle.textContent = t;
-    serpDesc.textContent = d;
-
-    try {
-      const parsedUrl = new URL(c);
-      serpSiteName.textContent = parsedUrl.hostname;
-      serpBreadcrumb.textContent = parsedUrl.origin + ' > ' + parsedUrl.pathname.replace(/^\/|\/$/g, '').replace(/\//g, ' > ');
-    } catch(e) {
-      serpSiteName.textContent = 'example.com';
-      serpBreadcrumb.textContent = c;
-    }
-
-    let code = '<!-- Primary SEO Meta Tags -->\n';
-    code += '<title>' + escapeHtml(t) + '</title>\n';
-    code += '<meta name="description" content="' + escapeHtml(d) + '">\n';
-    code += '<link rel="canonical" href="' + escapeHtml(c) + '">\n';
-    code += '<meta name="robots" content="' + r + '">\n\n';
-    code += '<!-- Open Graph / Facebook / LinkedIn -->\n';
-    code += '<meta property="og:type" content="website">\n';
-    code += '<meta property="og:url" content="' + escapeHtml(c) + '">\n';
-    code += '<meta property="og:title" content="' + escapeHtml(t) + '">\n';
-    code += '<meta property="og:description" content="' + escapeHtml(d) + '">\n';
-    if (ogImg) code += '<meta property="og:image" content="' + escapeHtml(ogImg) + '">\n\n';
-    code += '<!-- Twitter Social Cards -->\n';
-    code += '<meta name="twitter:card" content="summary_large_image">\n';
-    code += '<meta name="twitter:title" content="' + escapeHtml(t) + '">\n';
-    code += '<meta name="twitter:description" content="' + escapeHtml(d) + '">';
-    if (ogImg) code += '\n<meta name="twitter:image" content="' + escapeHtml(ogImg) + '">';
-
-    outCode.value = code;
-  }
-
-  function escapeHtml(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-
-  [titleInp, descInp, canInp, robSel, ogImgInp].forEach(el => el && el.addEventListener('input', update));
-
-  btnDesktop.addEventListener('click', () => {
-    btnDesktop.className = 'px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold';
-    btnMobile.className = 'px-2 py-0.5 rounded opacity-60 hover:opacity-100';
-    serpCard.className = 'p-4 rounded-xl border border-neutral-700 bg-[#202124] text-neutral-200 flex-grow shadow-lg max-w-full';
   });
-
-  btnMobile.addEventListener('click', () => {
-    btnMobile.className = 'px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold';
-    btnDesktop.className = 'px-2 py-0.5 rounded opacity-60 hover:opacity-100';
-    serpCard.className = 'p-4 rounded-2xl border-2 border-emerald-500/40 bg-[#202124] text-neutral-200 flex-grow shadow-lg max-w-[360px] mx-auto';
-  });
-
-  copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(outCode.value).then(() => {
-      copyText.innerText = "✓ Copied!";
-      copyBtn.classList.add('bg-emerald-400');
-      setTimeout(() => {
-        copyText.innerText = "Copy Meta Tags";
-        copyBtn.classList.remove('bg-emerald-400');
-      }, 1800);
-    });
-  });
-
-  update();
 })();
 </script>
 
