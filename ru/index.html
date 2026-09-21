@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="ru-RU" class="scroll-smooth" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeoKit Studio - Технический SEO-инструментарий и генератор метатегов</title>
+  <meta name="description" content="Превью карточек Open Graph, генератор тегов hreflang, проверка robots.txt и разметка Schema JSON-LD.">
+  <link rel="canonical" href="https://seokit.globalcorehub.com/ru/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://seokit.globalcorehub.com/sitemap.xml">
+
+  <!-- Dynamic Zero-Latency SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2310b981'/><text y='70' x='18' font-size='65' font-family='monospace' font-weight='bold' fill='%230c0e14'>&gt;_</text></svg>">
+
+  <!-- International SEO hreflang tags (7 Languages) -->
+  <link rel="alternate" hreflang="en" href="https://seokit.globalcorehub.com/" />
+  <link rel="alternate" hreflang="zh-CN" href="https://seokit.globalcorehub.com/zh/" />
+  <link rel="alternate" hreflang="zh" href="https://seokit.globalcorehub.com/zh/" />
+  <link rel="alternate" hreflang="es" href="https://seokit.globalcorehub.com/es/" />
+  <link rel="alternate" hreflang="pt" href="https://seokit.globalcorehub.com/pt/" />
+  <link rel="alternate" hreflang="de" href="https://seokit.globalcorehub.com/de/" />
+  <link rel="alternate" hreflang="fr" href="https://seokit.globalcorehub.com/fr/" />
+  <link rel="alternate" hreflang="ja" href="https://seokit.globalcorehub.com/ja/" />
+  <link rel="alternate" hreflang="ko-KR" href="https://seokit.globalcorehub.com/ko/" />
+  <link rel="alternate" hreflang="it-IT" href="https://seokit.globalcorehub.com/it/" />
+  <link rel="alternate" hreflang="ru-RU" href="https://seokit.globalcorehub.com/ru/" />
+  <link rel="alternate" hreflang="ar-SA" href="https://seokit.globalcorehub.com/ar/" />
+  <link rel="alternate" hreflang="id-ID" href="https://seokit.globalcorehub.com/id/" />
+  <link rel="alternate" hreflang="vi-VN" href="https://seokit.globalcorehub.com/vi/" />
+  <link rel="alternate" hreflang="tr-TR" href="https://seokit.globalcorehub.com/tr/" />
+  <link rel="alternate" hreflang="th-TH" href="https://seokit.globalcorehub.com/th/" />
+  <link rel="alternate" hreflang="hi-IN" href="https://seokit.globalcorehub.com/hi/" />
+  <link rel="alternate" hreflang="nl-NL" href="https://seokit.globalcorehub.com/nl/" />
+  <link rel="alternate" hreflang="pl-PL" href="https://seokit.globalcorehub.com/pl/" />
+  <link rel="alternate" hreflang="sv-SE" href="https://seokit.globalcorehub.com/sv/" />
+  <link rel="alternate" hreflang="x-default" href="https://seokit.globalcorehub.com/" />
+
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seokit.globalcorehub.com/ru/">
+  <meta property="og:title" content="SeoKit Studio - Технический SEO-инструментарий и генератор метатегов">
+  <meta property="og:description" content="Превью карточек Open Graph, генератор тегов hreflang, проверка robots.txt и разметка Schema JSON-LD.">
+  <meta property="og:site_name" content="SeoKit Studio">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="https://seokit.globalcorehub.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SeoKit Studio">
+
+  <!-- Twitter Social Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SeoKit Studio - Технический SEO-инструментарий и генератор метатегов">
+  <meta name="twitter:description" content="Превью карточек Open Graph, генератор тегов hreflang, проверка robots.txt и разметка Schema JSON-LD.">
+  <meta name="twitter:image" content="https://seokit.globalcorehub.com/og-image.svg">
+
+  <!-- Multi-Theme Typography Imports (JetBrains Mono, Plus Jakarta Sans, Space Grotesk) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+
+  <!-- Immediate Zero-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      try {
+        var t = 'terminal_dev';
+        document.documentElement.setAttribute('data-theme', t);
+        if (t === 'swiss_minimal' || t === 'apple_bento_glass') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Tailwind CSS Core -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#10b981'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Theme Specific & Dynamic Multi-Theme Styles -->
+  <style>
+    body { font-family: 'JetBrains Mono', monospace; }
+    
+        pre, code, kbd { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0c0e14; }
+        ::-webkit-scrollbar-thumb { background: #1e2333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+        .terminal-dot-red { background-color: #ff5f56; }
+        .terminal-dot-yellow { background-color: #ffbd2e; }
+        .terminal-dot-green { background-color: #27c93f; }
+        
+
+    /* Dynamic Multi-Theme Overrides */
+    html[data-theme="terminal_dev"] body {
+      font-family: 'JetBrains Mono', monospace !important;
+      background-color: #0c0e14 !important;
+      color: #e2e8f0 !important;
+    }
+    html[data-theme="terminal_dev"] .bg-\[\#0c0e14\] { background-color: #0c0e14 !important; }
+    html[data-theme="terminal_dev"] header,
+    html[data-theme="terminal_dev"] .bg-\[\#11141d\] { background-color: #11141d !important; }
+    html[data-theme="terminal_dev"] .border-\[\#1e2333\] { border-color: #1e2333 !important; }
+    html[data-theme="terminal_dev"] .text-\[\#10b981\] { color: #10b981 !important; }
+    html[data-theme="terminal_dev"] .bg-\[\#10b981\] { background-color: #10b981 !important; color: #000000 !important; }
+    html[data-theme="terminal_dev"] .bg-\[\#10b981\]\/10 { background-color: rgba(16, 185, 129, 0.12) !important; }
+    html[data-theme="terminal_dev"] .border-\[\#10b981\]\/30 { border-color: rgba(16, 185, 129, 0.3) !important; }
+    html[data-theme="terminal_dev"] [style*="color: #10b981"],
+    html[data-theme="terminal_dev"] [style*="color:#10b981"] { color: #10b981 !important; }
+
+    html[data-theme="cyber_electric"] body {
+      font-family: 'Space Grotesk', sans-serif !important;
+      background-color: #090d16 !important;
+      color: #cbd5e1 !important;
+    }
+    html[data-theme="cyber_electric"] .bg-\[\#0c0e14\],
+    html[data-theme="cyber_electric"] .bg-\[\#fafaf9\] { background-color: #090d16 !important; }
+    html[data-theme="cyber_electric"] header,
+    html[data-theme="cyber_electric"] .bg-\[\#11141d\],
+    html[data-theme="cyber_electric"] .bg-white { background-color: #0d1322 !important; }
+    html[data-theme="cyber_electric"] .border-\[\#1e2333\],
+    html[data-theme="cyber_electric"] .border-\[\#e2e8f0\] { border-color: #1e293b !important; }
+    html[data-theme="cyber_electric"] .text-\[\#10b981\] { color: #38bdf8 !important; }
+    html[data-theme="cyber_electric"] .bg-\[\#10b981\] { background-color: #38bdf8 !important; color: #090d16 !important; }
+    html[data-theme="cyber_electric"] .bg-\[\#10b981\]\/10 { background-color: rgba(56, 189, 248, 0.12) !important; }
+    html[data-theme="cyber_electric"] .border-\[\#10b981\]\/30 { border-color: rgba(56, 189, 248, 0.35) !important; }
+    html[data-theme="cyber_electric"] [style*="color: #10b981"],
+    html[data-theme="cyber_electric"] [style*="color:#10b981"] { color: #38bdf8 !important; }
+
+    html[data-theme="midnight_purple"] body {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      background-color: #0b0716 !important;
+      color: #e9d5ff !important;
+    }
+    html[data-theme="midnight_purple"] .bg-\[\#0c0e14\],
+    html[data-theme="midnight_purple"] .bg-\[\#fafaf9\] { background-color: #0b0716 !important; }
+    html[data-theme="midnight_purple"] header,
+    html[data-theme="midnight_purple"] .bg-\[\#11141d\],
+    html[data-theme="midnight_purple"] .bg-white { background-color: #160e2b !important; }
+    html[data-theme="midnight_purple"] .border-\[\#1e2333\],
+    html[data-theme="midnight_purple"] .border-\[\#e2e8f0\] { border-color: #3b1d68 !important; }
+    html[data-theme="midnight_purple"] .text-\[\#10b981\] { color: #c084fc !important; }
+    html[data-theme="midnight_purple"] .bg-\[\#10b981\] { background-color: #c084fc !important; color: #0b0716 !important; }
+    html[data-theme="midnight_purple"] .bg-\[\#10b981\]\/10 { background-color: rgba(192, 132, 252, 0.15) !important; }
+    html[data-theme="midnight_purple"] .border-\[\#10b981\]\/30 { border-color: rgba(192, 132, 252, 0.35) !important; }
+    html[data-theme="midnight_purple"] [style*="color: #10b981"],
+    html[data-theme="midnight_purple"] [style*="color:#10b981"] { color: #c084fc !important; }
+
+    html[data-theme="swiss_minimal"] body {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+    html[data-theme="swiss_minimal"] .bg-\[\#0c0e14\],
+    html[data-theme="swiss_minimal"] .bg-\[\#fafaf9\] { background-color: #f8fafc !important; }
+    html[data-theme="swiss_minimal"] header,
+    html[data-theme="swiss_minimal"] .bg-\[\#11141d\],
+    html[data-theme="swiss_minimal"] .bg-white { background-color: #ffffff !important; }
+    html[data-theme="swiss_minimal"] .border-\[\#1e2333\],
+    html[data-theme="swiss_minimal"] .border-\[\#3b1d68\] { border-color: #e2e8f0 !important; }
+    html[data-theme="swiss_minimal"] .text-\[\#e2e8f0\],
+    html[data-theme="swiss_minimal"] .text-\[\#cbd5e1\],
+    html[data-theme="swiss_minimal"] .text-\[\#e9d5ff\] { color: #0f172a !important; }
+    html[data-theme="swiss_minimal"] .text-\[\#10b981\] { color: #2563eb !important; }
+    html[data-theme="swiss_minimal"] .bg-\[\#10b981\] { background-color: #2563eb !important; color: #ffffff !important; }
+    html[data-theme="swiss_minimal"] .bg-\[\#10b981\]\/10 { background-color: rgba(37, 99, 235, 0.08) !important; }
+    html[data-theme="swiss_minimal"] .border-\[\#10b981\]\/30 { border-color: rgba(37, 99, 235, 0.2) !important; }
+    html[data-theme="swiss_minimal"] [style*="color: #10b981"],
+    html[data-theme="swiss_minimal"] [style*="color:#10b981"] { color: #2563eb !important; }
+    html[data-theme="swiss_minimal"] #header-terminal-dots { display: none !important; }
+    html[data-theme="swiss_minimal"] input,
+    html[data-theme="swiss_minimal"] textarea {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    html[data-theme="apple_bento_glass"] body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+    html[data-theme="apple_bento_glass"] .bg-\[\#0c0e14\],
+    html[data-theme="apple_bento_glass"] .bg-\[\#fafaf9\] { background-color: #f8fafc !important; }
+    html[data-theme="apple_bento_glass"] header {
+      background-color: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px) !important;
+      border-color: rgba(226, 232, 240, 0.8) !important;
+    }
+    html[data-theme="apple_bento_glass"] .border-\[\#1e2333\],
+    html[data-theme="apple_bento_glass"] .border-\[\#3b1d68\] { border-color: #e2e8f0 !important; }
+    html[data-theme="apple_bento_glass"] .text-\[\#e2e8f0\],
+    html[data-theme="apple_bento_glass"] .text-\[\#cbd5e1\],
+    html[data-theme="apple_bento_glass"] .text-\[\#e9d5ff\] { color: #0f172a !important; }
+    html[data-theme="apple_bento_glass"] .text-\[\#10b981\] { color: #0284c7 !important; }
+    html[data-theme="apple_bento_glass"] .bg-\[\#10b981\] { background-color: #0284c7 !important; color: #ffffff !important; }
+    html[data-theme="apple_bento_glass"] .bg-\[\#10b981\]\/10 { background-color: rgba(2, 132, 199, 0.1) !important; }
+    html[data-theme="apple_bento_glass"] .border-\[\#10b981\]\/30 { border-color: rgba(2, 132, 199, 0.25) !important; }
+    html[data-theme="apple_bento_glass"] [style*="color: #10b981"],
+    html[data-theme="apple_bento_glass"] [style*="color:#10b981"] { color: #0284c7 !important; }
+    html[data-theme="apple_bento_glass"] #header-terminal-dots { display: none !important; }
+    html[data-theme="apple_bento_glass"] input,
+    html[data-theme="apple_bento_glass"] textarea,
+    html[data-theme="apple_bento_glass"] select {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      border-color: #cbd5e1 !important;
+    }
+    #tool-search, #search-section, [data-search-target] {
+      scroll-margin-top: 130px;
+    }
+    @keyframes search-glow-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .search-highlight-pulse {
+      animation: search-glow-pulse 0.4s ease-in-out 2;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.45) !important;
+      border-color: rgb(16, 185, 129) !important;
+    }
+
+    /* Fluid Motion & Micro-Interactions Suite */
+    @keyframes subtle-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes ambient-glow {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.65; transform: scale(1.06); }
+    }
+    @keyframes shimmer-sweep {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+    @keyframes spring-pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      60% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .motion-float {
+      animation: subtle-float 6s ease-in-out infinite;
+    }
+    .motion-glow {
+      animation: ambient-glow 7s ease-in-out infinite;
+    }
+    .motion-card {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+      will-change: transform;
+    }
+    .motion-card:hover {
+      transform: translateY(-4px);
+    }
+    .motion-btn {
+      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+      will-change: transform;
+    }
+    .motion-btn:active {
+      transform: scale(0.96);
+    }
+    .spring-pop {
+      animation: spring-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  </style>
+
+  <!-- Structured Data JSON-LD (WebSite & SearchAction) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SeoKit Studio",
+    "url": "https://seokit.globalcorehub.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://seokit.globalcorehub.com/?q={search_term_string}#tool-search",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Structured Data JSON-LD (WebApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SeoKit Studio - Технический SEO-инструментарий и генератор метатегов",
+    "url": "https://seokit.globalcorehub.com/ru/",
+    "description": "Превью карточек Open Graph, генератор тегов hreflang, проверка robots.txt и разметка Schema JSON-LD.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  
+
+  <!-- Tech Stack Scripts (Alpine.js / Canvas loop / Terminal runtime) -->
+  
+        <script>
+        // Terminal Keyboard Shortcut (Ctrl+K or /) & Toast Notification Runtime
+        window.showToast = function(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-6 right-6 z-50 bg-[#10b981] text-black font-mono text-xs px-4 py-2.5 rounded-lg shadow-2xl font-bold flex items-center space-x-2 animate-bounce';
+            toast.innerHTML = '<span>></span><span>' + msg + '</span>';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        };
+        </script>
+        
+
+  <!-- Google AdSense Monetization (Activated when site traffic qualifies and client ID is set) -->
+  
+</head>
+<body class="bg-[#0c0e14] text-[#e2e8f0] min-h-screen flex flex-col transition-colors duration-200">
+
+  
+
+  <!-- Header Navigation (Responsive Desktop & Mobile) -->
+  <header class="sticky top-0 z-50 bg-[#11141d]/90 backdrop-blur-md border-b border-[#1e2333]">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand & Terminal Indicator -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        
+        <div class="hidden sm:flex items-center space-x-1.5 mr-1 sm:mr-2">
+          <span class="w-3 h-3 rounded-full terminal-dot-red inline-block"></span>
+          <span class="w-3 h-3 rounded-full terminal-dot-yellow inline-block"></span>
+          <span class="w-3 h-3 rounded-full terminal-dot-green inline-block"></span>
+        </div>
+        
+
+        <a href="/ru/" class="flex items-center space-x-2.5 sm:space-x-3 group">
+          
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center font-black text-base sm:text-lg bg-[#10b981] hover:bg-[#059669] text-black font-bold tracking-tight shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+            S
+          </div>
+          
+          <span class="text-base sm:text-lg font-extrabold tracking-tight truncate max-w-[150px] sm:max-w-none">
+            SeoKit Studio
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Links (Clean Dropdown Architecture) -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs lg:text-sm font-medium">
+        <a href="/ru/" class="px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition opacity-90 whitespace-nowrap">Главная</a>
+
+        <!-- "All Tools" Structured Dropdown Menu -->
+        <div class="relative inline-block text-left" id="tools-dropdown-container">
+          <button id="tools-dropdown-btn" type="button" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-lg hover:bg-white/10 transition opacity-80 hover:opacity-100 font-medium">
+            <span>Все Инструменты</span>
+            <svg id="tools-arrow-icon" class="w-3.5 h-3.5 opacity-60 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown Panel (Categorized & Compact) -->
+          <div id="tools-dropdown-panel" class="hidden absolute left-0 mt-1.5 w-72 sm:w-80 rounded-2xl bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] shadow-2xl z-50 p-2 font-mono text-xs backdrop-blur-xl">
+            <div class="flex items-center justify-between px-2.5 py-1 text-[10px] uppercase tracking-wider opacity-50 border-b border-white/10 mb-1">
+              <span>Каталог Инструментов</span>
+              <span>6 Все Инструменты</span>
+            </div>
+            <div class="max-h-72 overflow-y-auto space-y-0.5">
+              
+              <a href="/ru/opengraph-card-preview" title="Og Card Preview Превью" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Og Card Prev Превь</div>
+                  <div class="text-[10px] opacity-50 truncate">Og Card Preview: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/ru/hreflang-tag-generator" title="Hreflang Gen Генератор" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Hreflang Gen Генер</div>
+                  <div class="text-[10px] opacity-50 truncate">Hreflang Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/ru/robots-txt-generator" title="Robots Gen Генератор" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Robots Gen Генерат</div>
+                  <div class="text-[10px] opacity-50 truncate">Robots Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/ru/schema-json-ld-generator" title="Schema Gen Генератор" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Schema Gen Генерат</div>
+                  <div class="text-[10px] opacity-50 truncate">Schema Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/ru/keyword-density-analyzer" title="Keyword Density Проверка" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Keyword Dens Прове</div>
+                  <div class="text-[10px] opacity-50 truncate">Keyword Density: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+              <a href="/ru/seo-technical-audit-meta-tag-analyzer" title="Meta Tag Analyzer Анализатор" class="flex items-center justify-between px-2.5 py-2 rounded-xl hover:bg-white/10 transition group/item">
+                <div class="truncate mr-2">
+                  <div class="font-bold text-xs group-hover/item:text-brand transition truncate">Meta Tag Ana Анали</div>
+                  <div class="text-[10px] opacity-50 truncate">Meta Tag Analyzer: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</div>
+                </div>
+                <span class="text-[10px] opacity-30 font-mono group-hover/item:opacity-80 transition">&rarr;</span>
+              </a>
+              
+            </div>
+            <div class="mt-1.5 pt-1.5 border-t border-white/10 px-2 flex items-center justify-between">
+              <a href="/ru/#tools-grid" class="text-[11px] font-bold hover:underline flex items-center space-x-1" style="color: #10b981">
+                <span>Весь Каталог</span>
+                <span>&rarr;</span>
+              </a>
+              <span class="text-[10px] opacity-40 font-mono">100% Локально</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- At most 2 quick shortcut links for high-frequency tools on large screens -->
+        
+        <a href="/ru/opengraph-card-preview" title="Og Card Preview Превью" class="hidden xl:inline-block px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition opacity-70 hover:opacity-100 whitespace-nowrap">Og Card Prev Превь</a>
+        
+        <a href="/ru/hreflang-tag-generator" title="Hreflang Gen Генератор" class="hidden xl:inline-block px-2.5 py-1.5 rounded-lg hover:bg-white/5 transition opacity-70 hover:opacity-100 whitespace-nowrap">Hreflang Gen Генер</a>
+        
+      </nav>
+
+      <!-- Action Items & Language Selector & Quick Search & Mobile Hamburger -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- Quick Search Trigger in Header -->
+        <button id="global-search-btn" type="button" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-black/15 hover:bg-black/30 text-xs font-mono opacity-80 hover:opacity-100 transition" title="Поиск инструментов... (Нажмите /)">
+          <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <span class="hidden sm:inline opacity-70">Поиск</span>
+          <kbd class="hidden sm:inline text-[9px] px-1 py-0.5 rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50 bg-black/20 font-mono">Ctrl+K</kbd>
+        </button>
+
+
+
+        <!-- 7-Language International Dropdown -->
+        <div class="relative inline-block text-left" id="lang-container">
+          <button id="lang-toggle-btn" type="button" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-90 transition bg-black/20">
+            <span>[RU]</span>
+            <span class="font-bold">RU</span>
+            <span class="text-[9px] opacity-60">&darr;</span>
+          </button>
+          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-36 rounded-xl bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] z-50 py-1.5 font-mono text-xs shadow-2xl">
+            
+            <a href="/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[EN] English</span>
+              <span class="text-[10px] opacity-50 uppercase">en</span>
+            </a>
+            
+            <a href="/zh/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[ZH] 简体中文</span>
+              <span class="text-[10px] opacity-50 uppercase">zh</span>
+            </a>
+            
+            <a href="/es/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[ES] Español</span>
+              <span class="text-[10px] opacity-50 uppercase">es</span>
+            </a>
+            
+            <a href="/pt/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[PT] Português</span>
+              <span class="text-[10px] opacity-50 uppercase">pt</span>
+            </a>
+            
+            <a href="/de/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[DE] Deutsch</span>
+              <span class="text-[10px] opacity-50 uppercase">de</span>
+            </a>
+            
+            <a href="/fr/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[FR] Français</span>
+              <span class="text-[10px] opacity-50 uppercase">fr</span>
+            </a>
+            
+            <a href="/ja/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[JA] 日本語</span>
+              <span class="text-[10px] opacity-50 uppercase">ja</span>
+            </a>
+            
+            <a href="/ko/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[KO] 한국어</span>
+              <span class="text-[10px] opacity-50 uppercase">ko</span>
+            </a>
+            
+            <a href="/it/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[IT] Italiano</span>
+              <span class="text-[10px] opacity-50 uppercase">it</span>
+            </a>
+            
+            <a href="/ru/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition font-bold text-emerald-400">
+              <span>[RU] Русский</span>
+              <span class="text-[10px] opacity-50 uppercase">ru</span>
+            </a>
+            
+            <a href="/ar/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[AR] العربية</span>
+              <span class="text-[10px] opacity-50 uppercase">ar</span>
+            </a>
+            
+            <a href="/id/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[ID] Bahasa Indonesia</span>
+              <span class="text-[10px] opacity-50 uppercase">id</span>
+            </a>
+            
+            <a href="/vi/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[VI] Tiếng Việt</span>
+              <span class="text-[10px] opacity-50 uppercase">vi</span>
+            </a>
+            
+            <a href="/tr/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[TR] Türkçe</span>
+              <span class="text-[10px] opacity-50 uppercase">tr</span>
+            </a>
+            
+            <a href="/th/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[TH] ภาษาไทย</span>
+              <span class="text-[10px] opacity-50 uppercase">th</span>
+            </a>
+            
+            <a href="/hi/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[HI] हिन्दी</span>
+              <span class="text-[10px] opacity-50 uppercase">hi</span>
+            </a>
+            
+            <a href="/nl/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[NL] Nederlands</span>
+              <span class="text-[10px] opacity-50 uppercase">nl</span>
+            </a>
+            
+            <a href="/pl/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[PL] Polski</span>
+              <span class="text-[10px] opacity-50 uppercase">pl</span>
+            </a>
+            
+            <a href="/sv/" class="flex items-center justify-between px-3 py-1.5 hover:bg-white/10 transition opacity-75">
+              <span>[SV] Svenska</span>
+              <span class="text-[10px] opacity-50 uppercase">sv</span>
+            </a>
+            
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button (Visible on mobile <768px) -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 hover:opacity-80 transition flex items-center justify-center bg-black/20" aria-label="Toggle Navigation Menu">
+          <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Collapsible Navigation Menu Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#1e2333] bg-[#11141d]/90 backdrop-blur-md px-4 pt-3 pb-5 space-y-2 backdrop-blur-lg">
+      <a href="/ru/" class="block px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/10 transition">Главная</a>
+
+
+
+      <!-- Quick Search Trigger in Mobile Drawer -->
+      <button id="mobile-search-trigger" type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/20 text-xs font-mono opacity-80">
+        <span class="flex items-center space-x-2">
+          <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <span>Поиск инструментов... (Нажмите /)</span>
+        </span>
+        <kbd class="text-[10px] px-1.5 py-0.5 rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50">/</kbd>
+      </button>
+
+      <!-- Tools Group in Mobile Drawer -->
+      <div class="pt-2 border-t border-[#1e2333]">
+        <div class="text-[10px] font-mono uppercase tracking-wider opacity-50 px-3 mb-1">Все Инструменты (6)</div>
+        <div class="space-y-1 max-h-60 overflow-y-auto">
+          
+          <a href="/ru/opengraph-card-preview" title="Og Card Preview Превью" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Og Card Prev Превь</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/ru/hreflang-tag-generator" title="Hreflang Gen Генератор" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Hreflang Gen Генер</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/ru/robots-txt-generator" title="Robots Gen Генератор" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Robots Gen Генерат</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/ru/schema-json-ld-generator" title="Schema Gen Генератор" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Schema Gen Генерат</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/ru/keyword-density-analyzer" title="Keyword Density Проверка" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Keyword Dens Прове</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+          <a href="/ru/seo-technical-audit-meta-tag-analyzer" title="Meta Tag Analyzer Анализатор" class="block px-3 py-2 rounded-xl text-xs font-medium hover:bg-white/10 transition opacity-80 hover:opacity-100 flex items-center justify-between">
+            <span class="truncate">Meta Tag Ana Анали</span>
+            <span class="text-xs opacity-30 font-mono ml-2">&rarr;</span>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+    
+
+    
+
+    
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center py-8 sm:py-12 md:py-16">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs font-mono mb-4 sm:mb-5">
+          <span>Технический SEO-инструментарий и генератор метатегов</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight mb-3 sm:mb-4">
+          SeoKit Studio
+        </h1>
+        <p class="max-w-2xl mx-auto text-xs sm:text-sm md:text-base opacity-75 leading-relaxed px-2">
+          Превью карточек Open Graph, генератор тегов hreflang, проверка robots.txt и разметка Schema JSON-LD.
+        </p>
+      </div>
+
+      <div class="max-w-2xl mx-auto mb-8 sm:mb-12 px-2">
+        <div id="search-section" class="relative flex items-center scroll-mt-28 sm:scroll-mt-36">
+          <div class="absolute left-4 opacity-50 pointer-events-none">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+          <input type="text" id="tool-search" placeholder="Поиск инструментов... (Нажмите /)" class="w-full pl-11 pr-20 py-3 sm:py-3.5 rounded-2xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/10 dark:bg-black/30 text-xs sm:text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition scroll-mt-28 sm:scroll-mt-36">
+          <div class="absolute right-3.5 flex items-center space-x-1.5">
+            <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono rounded border border-[#1e2333] hover:border-[#10b981]/50 opacity-50 bg-black/20">Ctrl+K</kbd>
+            <button id="btn-clear-search" class="hidden text-xs opacity-60 hover:opacity-100 font-mono px-1">&times;</button>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-[11px] font-mono opacity-60 mt-2.5 px-1">
+          <span id="search-stats">Показано 6 инструментов</span>
+          <span class="hidden sm:inline">100% В Браузере</span>
+        </div>
+      </div>
+
+      <div id="no-tools-found" class="hidden text-center py-12 px-4 rounded-2xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/5 dark:bg-white/5 mb-12">
+        <p class="text-sm font-mono opacity-75 mb-3">Инструменты не найдены.</p>
+        <button id="btn-reset-filter" class="px-4 py-1.5 rounded-xl text-xs font-mono font-bold border border-[#1e2333] hover:border-[#10b981]/50 hover:bg-white/10 transition">
+          Сбросить Фильтр
+        </button>
+      </div>
+
+      <div id="tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5 mb-12 sm:mb-16">
+        <a href="/ru/opengraph-card-preview" data-search="og card preview превью og card preview: быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов. og card preview превью og card preview online og card preview opengraph-card-preview" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% На Клиенте</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Og Card Preview Превью</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Og Card Preview: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#og card preview превью</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#og card preview</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#online og card preview</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Открыть</span><span>&rarr;</span></div></div></a>
+<a href="/ru/hreflang-tag-generator" data-search="hreflang gen генератор hreflang gen: быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов. hreflang gen генератор hreflang gen online hreflang gen hreflang-tag-generator" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% На Клиенте</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Hreflang Gen Генератор</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Hreflang Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#hreflang gen генератор</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#hreflang gen</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#online hreflang gen</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Открыть</span><span>&rarr;</span></div></div></a>
+<a href="/ru/robots-txt-generator" data-search="robots gen генератор robots gen: быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов. robots gen генератор robots gen online robots gen robots-txt-generator" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% На Клиенте</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Robots Gen Генератор</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Robots Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#robots gen генератор</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#robots gen</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#online robots gen</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Открыть</span><span>&rarr;</span></div></div></a>
+<a href="/ru/schema-json-ld-generator" data-search="schema gen генератор schema gen: быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов. schema gen генератор schema gen online schema gen schema-json-ld-generator" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% На Клиенте</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Schema Gen Генератор</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Schema Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#schema gen генератор</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#schema gen</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#online schema gen</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Открыть</span><span>&rarr;</span></div></div></a>
+<a href="/ru/keyword-density-analyzer" data-search="keyword density проверка keyword density: быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов. keyword density проверка keyword density online keyword density keyword-density-analyzer" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% На Клиенте</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Keyword Density Проверка</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Keyword Density: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#keyword density проверка</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#keyword density</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#online keyword density</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Открыть</span><span>&rarr;</span></div></div></a>
+<a href="/ru/seo-technical-audit-meta-tag-analyzer" data-search="meta tag analyzer анализатор meta tag analyzer: быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов. meta tag analyzer анализатор meta tag analyzer online meta tag analyzer seo-technical-audit-meta-tag-analyzer" class="tool-card bg-[#11141d] rounded-xl p-5 sm:p-6 border border-[#1e2333] hover:border-[#10b981]/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-200 flex flex-col justify-between group"><div><div class="flex items-center justify-between mb-3"><span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30">TOOL</span><span class="text-[11px] opacity-50 font-mono">100% На Клиенте</span></div><h3 class="text-base sm:text-lg font-bold group-hover:underline transition mb-2 tracking-tight">Meta Tag Analyzer Анализатор</h3><p class="text-xs opacity-75 line-clamp-2 mb-4 leading-relaxed">Meta Tag Analyzer: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.</p></div><div><div class="flex flex-wrap mb-3"><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#meta tag analyzer анализатор</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#meta tag analyzer</span><span class='inline-block bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/30 text-[11px] sm:text-xs px-2 py-0.5 rounded mr-1.5 mb-1.5 font-mono'>#online meta tag analyzer</span></div><div class="text-xs font-bold flex items-center space-x-1 group-hover:translate-x-1 transition-transform" style="color: #10b981"><span>Открыть</span><span>&rarr;</span></div></div></a>
+      </div>
+    </div>
+
+    <script>
+    (function() {
+      const searchInput = document.getElementById('tool-search');
+      const clearBtn = document.getElementById('btn-clear-search');
+      const resetBtn = document.getElementById('btn-reset-filter');
+      const emptyState = document.getElementById('no-tools-found');
+      const cards = Array.from(document.querySelectorAll('.tool-card'));
+      const statsEl = document.getElementById('search-stats');
+      const totalCards = cards.length;
+
+      function filterCards() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (clearBtn) clearBtn.classList.toggle('hidden', !query);
+
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const corpus = card.getAttribute('data-search') || '';
+          const matches = !query || corpus.includes(query);
+          card.style.display = matches ? '' : 'none';
+          if (matches) visibleCount++;
+        });
+
+        if (statsEl) {
+          statsEl.innerText = query ? ('Найдено __N__ из __TOTAL__'.replace('__N__', visibleCount).replace('__TOTAL__', totalCards)) : ('Показано __N__ инструментов'.replace('__N__', totalCards));
+        }
+
+        if (emptyState) {
+          emptyState.classList.toggle('hidden', visibleCount > 0);
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', filterCards);
+
+        document.addEventListener('keydown', e => {
+          const isSearchKey = (e.key === '/' && document.activeElement !== searchInput && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'INPUT') ||
+                              (e.key.toLowerCase() === 'k' && (e.ctrlKey || e.metaKey));
+          if (isSearchKey) {
+            e.preventDefault();
+            if (typeof window.focusAndCenterSearch === 'function') {
+              window.focusAndCenterSearch();
+            } else {
+              searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              searchInput.focus();
+              searchInput.select();
+            }
+          }
+          if (e.key === 'Escape' && document.activeElement === searchInput) {
+            searchInput.value = '';
+            filterCards();
+            searchInput.blur();
+          }
+        });
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterCards();
+          searchInput.focus();
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterCards();
+          searchInput.focus();
+        });
+      }
+    })();
+    </script>
+    
+
+    
+    <!-- GlobalCoreHub Native Multi-Format Ad Slot -->
+    <aside class="my-8 mx-auto max-w-5xl px-2 sm:px-4" aria-label="Sponsored Partner Content">
+      <div class="rounded-2xl border border-[#1e2333] hover:border-[#10b981]/50 bg-black/[0.03] dark:bg-white/[0.03] p-3 sm:p-5 text-center overflow-hidden transition-all">
+        <div class="text-[10px] uppercase font-mono tracking-widest opacity-40 mb-2.5 flex items-center justify-center space-x-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+          <span>СПОНСОРСКИЙ КОНТЕНТ</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        </div>
+        <div id="container-411eda7150daa05047a0b4f542aa62eb" class="min-h-[100px] flex items-center justify-center"></div>
+        <script async="async" data-cfasync="false" src="https://dischargeconceiteffort.com/411eda7150daa05047a0b4f542aa62eb/invoke.js"></script>
+      </div>
+    </aside>
+    
+
+    
+  </main>
+
+  <!-- Internal Linking Matrix -->
+  <section class="border-t border-[#1e2333] py-12 px-4 sm:px-6 lg:px-8 opacity-95">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-sm font-bold uppercase tracking-wider opacity-80 font-mono">
+          [+] Каталог Инструментов
+        </h3>
+        <span class="text-xs opacity-60 font-mono">6 Все Инструменты</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        
+        <a href="/ru/opengraph-card-preview" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Og Card Preview Превью
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Og Card Preview: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.
+          </p>
+        </a>
+        
+        <a href="/ru/hreflang-tag-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Hreflang Gen Генератор
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Hreflang Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.
+          </p>
+        </a>
+        
+        <a href="/ru/robots-txt-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Robots Gen Генератор
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Robots Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.
+          </p>
+        </a>
+        
+        <a href="/ru/schema-json-ld-generator" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Schema Gen Генератор
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Schema Gen: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.
+          </p>
+        </a>
+        
+        <a href="/ru/keyword-density-analyzer" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Keyword Density Проверка
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Keyword Density: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.
+          </p>
+        </a>
+        
+        <a href="/ru/seo-technical-audit-meta-tag-analyzer" class="p-3.5 rounded-lg border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] transition group block">
+          <div class="text-xs font-bold truncate group-hover:underline">
+            Meta Tag Analyzer Анализатор
+          </div>
+          <p class="text-[11px] opacity-60 mt-1 line-clamp-1">
+            Meta Tag Analyzer: Быстрый и конфиденциальный веб-инструмент, работающий локально в браузере без серверов.
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Multi-Language Matrix -->
+  <section class="border-t border-[#1e2333] py-10 px-4 sm:px-6 lg:px-8 opacity-95 bg-black/[0.02] dark:bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider opacity-85 font-mono flex items-center gap-2">
+            <span>🌐</span> <span>Глобальная Мультиязычная Сеть</span>
+          </h3>
+          <p class="text-xs opacity-60 mt-0.5 font-mono">
+            19 Языков Мира · 49 Локальных Точек · 100% В Браузере
+          </p>
+        </div>
+        <span class="text-xs font-mono opacity-50">[RU] Русский (ru)</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5">
+        
+        <a href="/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[EN]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">English</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/zh/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[ZH]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">简体中文</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/es/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[ES]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Español</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/pt/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[PT]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Português</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/de/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[DE]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Deutsch</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/fr/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[FR]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Français</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/ja/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[JA]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">日本語</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/ko/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[KO]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">한국어</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/it/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[IT]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Italiano</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/ru/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ring-2 ring-[#10b981]/50">
+          <div class="text-xl mb-1">[RU]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Русский</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/ar/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[AR]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">العربية</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/id/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[ID]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Bahasa Indonesia</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/vi/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[VI]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Tiếng Việt</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/tr/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[TR]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Türkçe</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/th/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[TH]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">ภาษาไทย</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/hi/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[HI]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">हिन्दी</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/nl/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[NL]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Nederlands</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/pl/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[PL]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Polski</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+        <a href="/sv/" class="p-3 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-[#11141d] hover:border-[#10b981] transition group flex flex-col justify-between text-center ">
+          <div class="text-xl mb-1">[SV]</div>
+          <div class="text-xs font-bold truncate group-hover:underline">Svenska</div>
+          <div class="text-[10px] opacity-50 font-mono mt-1">6 Все Инструменты</div>
+        </a>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Comprehensive Multi-Column Footer -->
+  <footer class="border-t border-[#1e2333] pt-12 pb-8 text-xs opacity-90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Prominent Medical / Financial Compliance Disclaimer Banner -->
+      <div class="mb-10 p-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400 font-mono flex items-start space-x-3 text-left">
+        <span class="text-lg leading-none mt-0.5">⚠️</span>
+        <div class="leading-relaxed">
+          <strong class="font-bold block mb-0.5 text-xs">Важное Уведомление & Отказ от Ответственности</strong>
+          <span class="text-[11px] opacity-90">100% Локальная проверка: без сохранения метаданных на внешних серверах.</span>
+        </div>
+      </div>
+      
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <!-- Col 1: Brand & Architecture -->
+        <div class="space-y-3">
+          <div class="text-sm font-bold tracking-tight">
+            SeoKit Studio
+          </div>
+          <p class="text-[11px] opacity-70 leading-relaxed max-w-xs">
+            Превью карточек Open Graph, генератор тегов hreflang, проверка robots.txt и разметка Schema JSON-LD.
+          </p>
+          <div class="p-2.5 rounded-xl border border-[#1e2333] hover:border-[#10b981]/50 bg-white/5 font-mono text-[11px] text-[#10b981]">
+            🔒 100% Локальная Песочница: Без серверов и без передачи данных.
+          </div>
+        </div>
+
+        <!-- Col 2: Top Tools Navigation -->
+        <div>
+          <h4 class="text-xs font-bold uppercase font-mono tracking-wider opacity-80 mb-3">
+            Инструменты & Каталог
+          </h4>
+          <ul class="space-y-2 font-mono text-[11px]">
+            
+            <li>
+              <a href="/ru/opengraph-card-preview" class="opacity-70 hover:opacity-100 hover:underline transition truncate block">
+                &rarr; Og Card Prev Превь
+              </a>
+            </li>
+            
+            <li>
+              <a href="/ru/hreflang-tag-generator" class="opacity-70 hover:opacity-100 hover:underline transition truncate block">
+                &rarr; Hreflang Gen Генер
+              </a>
+            </li>
+            
+            <li>
+              <a href="/ru/robots-txt-generator" class="opacity-70 hover:opacity-100 hover:underline transition truncate block">
+                &rarr; Robots Gen Генерат
+              </a>
+            </li>
+            
+            <li>
+              <a href="/ru/schema-json-ld-generator" class="opacity-70 hover:opacity-100 hover:underline transition truncate block">
+                &rarr; Schema Gen Генерат
+              </a>
+            </li>
+            
+            <li>
+              <a href="/ru/keyword-density-analyzer" class="opacity-70 hover:opacity-100 hover:underline transition truncate block">
+                &rarr; Keyword Dens Прове
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <!-- Col 3: Global Languages Hub -->
+        <div>
+          <h4 class="text-xs font-bold uppercase font-mono tracking-wider opacity-80 mb-3">
+            Глобальная Мультиязычная Сеть
+          </h4>
+          <div class="grid grid-cols-2 gap-1.5 font-mono text-[11px]">
+            
+            <a href="/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[EN]</span>
+              <span>English</span>
+            </a>
+            
+            <a href="/zh/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[ZH]</span>
+              <span>简体中文</span>
+            </a>
+            
+            <a href="/es/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[ES]</span>
+              <span>Español</span>
+            </a>
+            
+            <a href="/pt/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[PT]</span>
+              <span>Português</span>
+            </a>
+            
+            <a href="/de/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[DE]</span>
+              <span>Deutsch</span>
+            </a>
+            
+            <a href="/fr/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[FR]</span>
+              <span>Français</span>
+            </a>
+            
+            <a href="/ja/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[JA]</span>
+              <span>日本語</span>
+            </a>
+            
+            <a href="/ko/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[KO]</span>
+              <span>한국어</span>
+            </a>
+            
+            <a href="/it/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[IT]</span>
+              <span>Italiano</span>
+            </a>
+            
+            <a href="/ru/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[RU]</span>
+              <span>Русский</span>
+            </a>
+            
+            <a href="/ar/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[AR]</span>
+              <span>العربية</span>
+            </a>
+            
+            <a href="/id/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[ID]</span>
+              <span>Bahasa Indonesia</span>
+            </a>
+            
+            <a href="/vi/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[VI]</span>
+              <span>Tiếng Việt</span>
+            </a>
+            
+            <a href="/tr/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[TR]</span>
+              <span>Türkçe</span>
+            </a>
+            
+            <a href="/th/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[TH]</span>
+              <span>ภาษาไทย</span>
+            </a>
+            
+            <a href="/hi/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[HI]</span>
+              <span>हिन्दी</span>
+            </a>
+            
+            <a href="/nl/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[NL]</span>
+              <span>Nederlands</span>
+            </a>
+            
+            <a href="/pl/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[PL]</span>
+              <span>Polski</span>
+            </a>
+            
+            <a href="/sv/" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1.5 py-0.5">
+              <span>[SV]</span>
+              <span>Svenska</span>
+            </a>
+            
+          </div>
+        </div>
+
+        <!-- Col 4: Crawlers & Legal Standards -->
+        <div>
+          <h4 class="text-xs font-bold uppercase font-mono tracking-wider opacity-80 mb-3">
+            Правила & Краулеры
+          </h4>
+          <ul class="space-y-2 font-mono text-[11px]">
+            <li>
+              <a href="/sitemap.xml" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1">
+                <span>📄</span> <span>sitemap.xml</span>
+              </a>
+            </li>
+            <li>
+              <a href="/robots.txt" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1">
+                <span>🤖</span> <span>robots.txt</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://globalcorehub.com" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 hover:underline transition flex items-center gap-1">
+                <span>🌐</span> <span>globalcorehub.com</span>
+              </a>
+            </li>
+            
+            <li>
+              <a href="https://dischargeconceiteffort.com/bs4tah5fhz?key=f031a850339a5c91e7f30d97af3de3b2" target="_blank" rel="sponsored noopener noreferrer" class="opacity-80 hover:opacity-100 hover:underline transition flex items-center gap-1 text-amber-500 font-bold">
+                <span>⚡</span> <span>Решение Партнера ↗</span>
+              </a>
+            </li>
+            
+            <li class="pt-1 text-[10px] opacity-50 font-mono">
+              ⚡ Cloudflare Edge · 0ms Холодный Старт
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-[#1e2333] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] opacity-60 font-mono">
+        <div>
+          &copy; 2026 <strong>SeoKit Studio</strong>. Быстро, Приватно & Ускорение Cloudflare Edge.
+        </div>
+        <div class="flex items-center space-x-3">
+          <span>100% В Браузере</span>
+          <span>&bull;</span>
+          <span>Архитектура v2.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top-btn" type="button" class="fixed bottom-6 right-6 p-2.5 rounded-full bg-[#11141d] border border-[#1e2333] hover:border-[#10b981]/50 shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-40 hover:scale-110 focus:outline-none" aria-label="Наверх" title="Наверх">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
+
+  <script>
+  (function() {
+    // 0. Tools Dropdown Toggle
+    const toolsBtn = document.getElementById('tools-dropdown-btn');
+    const toolsPanel = document.getElementById('tools-dropdown-panel');
+    const toolsArrow = document.getElementById('tools-arrow-icon');
+    if (toolsBtn && toolsPanel) {
+      toolsBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = toolsPanel.classList.toggle('hidden');
+        if (toolsArrow) toolsArrow.classList.toggle('rotate-180', !isHidden);
+      });
+      document.addEventListener('click', (e) => {
+        if (!toolsPanel.contains(e.target) && e.target !== toolsBtn) {
+          toolsPanel.classList.add('hidden');
+          if (toolsArrow) toolsArrow.classList.remove('rotate-180');
+        }
+      });
+    }
+
+    // 0.1 Quick Search Trigger Action with Header Offset
+    function triggerSearchFocus() {
+      const searchInput = document.getElementById('tool-search');
+      if (searchInput) {
+        const header = document.querySelector('header') || document.querySelector('nav');
+        const headerOffset = (header ? header.offsetHeight : 70) + 24;
+        const elementPosition = searchInput.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+          try {
+            searchInput.focus({ preventScroll: true });
+            searchInput.select();
+          } catch (e) {
+            searchInput.focus();
+          }
+          searchInput.classList.add('search-highlight-pulse');
+          setTimeout(() => searchInput.classList.remove('search-highlight-pulse'), 1200);
+        }, 300);
+      } else {
+        window.location.href = '/ru/?focus_search=1#tool-search';
+      }
+    }
+    const globalSearchBtn = document.getElementById('global-search-btn');
+    const mobileSearchBtn = document.getElementById('mobile-search-trigger');
+    if (globalSearchBtn) globalSearchBtn.addEventListener('click', triggerSearchFocus);
+    if (mobileSearchBtn) mobileSearchBtn.addEventListener('click', triggerSearchFocus);
+
+    // 0.2 Global Keyboard Shortcuts (Ctrl+K / Cmd+K or /)
+    document.addEventListener('keydown', (e) => {
+      const isSearchShortcut = (e.key.toLowerCase() === 'k' && (e.ctrlKey || e.metaKey)) ||
+                               (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName));
+      if (isSearchShortcut) {
+        e.preventDefault();
+        triggerSearchFocus();
+      }
+    });
+
+    // 0.3 Floating Back to Top Button
+    const bttBtn = document.getElementById('back-to-top-btn');
+    if (bttBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          bttBtn.classList.remove('opacity-0', 'pointer-events-none');
+          bttBtn.classList.add('opacity-90');
+        } else {
+          bttBtn.classList.add('opacity-0', 'pointer-events-none');
+          bttBtn.classList.remove('opacity-90');
+        }
+      }, { passive: true });
+      bttBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    const searchParams = new URLSearchParams(window.location.search);
+    if (window.location.hash === '#tool-search' || searchParams.get('focus_search') === '1' || searchParams.has('q')) {
+      setTimeout(triggerSearchFocus, 250);
+    }
+
+    // 0.4 Dynamic Multi-Theme Switcher
+    const THEME_NAMES = {
+      'terminal_dev': 'Терминал',
+      'cyber_electric': 'Кибернеон',
+      'midnight_purple': 'Полночный Пурпур',
+      'swiss_minimal': 'Минимализм'
+    };
+    const THEME_ICONS = {
+      'terminal_dev': '🖤',
+      'cyber_electric': '🌌',
+      'midnight_purple': '🟣',
+      'swiss_minimal': '⚪'
+    };
+
+    window.switchTheme = function(themeId, notify) {
+      try {
+        localStorage.setItem('agy_theme', themeId);
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', themeId);
+      if (themeId === 'swiss_minimal') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+
+      const nameEl = document.getElementById('theme-current-name');
+      const iconEl = document.getElementById('theme-current-icon');
+      if (nameEl && THEME_NAMES[themeId]) nameEl.textContent = THEME_NAMES[themeId];
+      if (iconEl && THEME_ICONS[themeId]) iconEl.textContent = THEME_ICONS[themeId];
+
+      document.querySelectorAll('#theme-dropdown-menu [data-theme-opt]').forEach(btn => {
+        const isCurrent = btn.getAttribute('data-theme-opt') === themeId;
+        const chk = btn.querySelector('.theme-check');
+        if (chk) chk.style.opacity = isCurrent ? '1' : '0';
+      });
+
+      const menu = document.getElementById('theme-dropdown-menu');
+      if (menu) menu.classList.add('hidden');
+
+      if (notify && typeof window.showToast === 'function') {
+        window.showToast(THEME_NAMES[themeId] || themeId);
+      }
+    };
+
+    // Initialize saved theme
+    try {
+      const saved = localStorage.getItem('agy_theme');
+      if (saved && THEME_NAMES[saved]) {
+        window.switchTheme(saved, false);
+      } else {
+        window.switchTheme('terminal_dev', false);
+      }
+    } catch (e) {}
+
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const themeMenu = document.getElementById('theme-dropdown-menu');
+    if (themeBtn && themeMenu) {
+      themeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeMenu.classList.toggle('hidden');
+        if (typeof langMenu !== 'undefined' && langMenu && !langMenu.classList.contains('hidden')) langMenu.classList.add('hidden');
+      });
+      document.addEventListener('click', () => {
+        if (!themeMenu.classList.contains('hidden')) themeMenu.classList.add('hidden');
+      });
+    }
+
+    // 1. Language dropdown menu
+    const langBtn = document.getElementById('lang-toggle-btn');
+    const langMenu = document.getElementById('lang-dropdown-menu');
+    if (langBtn && langMenu) {
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langMenu.classList.toggle('hidden');
+      });
+      document.addEventListener('click', () => {
+        if (!langMenu.classList.contains('hidden')) langMenu.classList.add('hidden');
+      });
+    }
+
+    // 2. Responsive Mobile Drawer Menu
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+          if (closeIcon) closeIcon.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          if (hamburgerIcon) hamburgerIcon.classList.add('hidden');
+          if (closeIcon) closeIcon.classList.remove('hidden');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && e.target !== menuBtn) {
+          mobileMenu.classList.add('hidden');
+          if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+          if (closeIcon) closeIcon.classList.add('hidden');
+        }
+      });
+    }
+  })();
+
+  // 3. Fluid Motion Helpers (Counter Ticker & Tactile Feedback)
+  window.animateCounter = function(element, targetValue, duration, prefix, suffix, decimals) {
+    if (!element) return;
+    duration = duration || 800;
+    prefix = prefix || '';
+    suffix = suffix || '';
+    decimals = decimals !== undefined ? decimals : 0;
+    const start = 0;
+    const end = parseFloat(targetValue) || 0;
+    const startTime = performance.now();
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = start + (end - start) * ease;
+      element.textContent = prefix + current.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    requestAnimationFrame(update);
+  };
+  </script>
+</body>
+</html>
